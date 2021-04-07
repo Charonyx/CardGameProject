@@ -1,20 +1,18 @@
-#Card Game | OOP project#
+#Card Game | OOP project
+
+<br>May The Force Be With You.
 
 
-May The Force Be With You.
-
-
-\~โชคดีนะทุกโคนนนน\~
+<br><br>\~โชคดีนะทุกโคนนนน\~<br><br>
 
 
 ***อัปโค้ด 'ตาม branch ชื่อเล่น' ของแต่ละคนนะ***
 
-cherry  -> เชอร์รี่
-onn     -> อร
-grace   -> เกรซ
-rom     -> รอม
+<br>cherry  -> เชอร์รี่
+<br>onn     -> อร
+<br>grace   -> เกรซ
+<br>rom     -> รอม
 
 
-เพิ่งรู้ว่า ถ้าใช้ '\~' นำหน้าข้อความ จะเป็นการขีดทับข้อความ
-
-~eiei~ // ขีดทับ eiei
+<br><br>เพิ่งรู้ว่า ถ้าใช้ '\~' นำหน้าข้อความ จะเป็นการขีดทับข้อความ
+<br>~eiei~ // ขีดทับ eiei
