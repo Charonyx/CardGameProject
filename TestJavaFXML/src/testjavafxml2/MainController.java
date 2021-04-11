@@ -5,12 +5,15 @@
  */
 package testjavafxml2;
 
+import com.sun.javafx.css.CalculatedValue;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -24,6 +27,12 @@ public class MainController implements Initializable {
 
     @FXML
     private Button btn2;
+    
+    @FXML
+    private TextField txt;
+    
+    @FXML
+    private DatePicker date;
 
     /**
      * Initializes the controller class.
@@ -37,6 +46,7 @@ public class MainController implements Initializable {
     private void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btn1) {
             System.out.println("You have clicked OK button.");
+            txt.setText("Pressed OK");
         }
     }
 
@@ -44,6 +54,7 @@ public class MainController implements Initializable {
     private void handleButtonAction2(ActionEvent event) {
         if (event.getSource() == btn2) {
             System.out.println("clear text");
+            txt.setText("Pressed clear text");
         }
     }
 
