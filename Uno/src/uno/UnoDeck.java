@@ -42,11 +42,11 @@ public class UnoDeck {
         }
     }
 
-    public void replaceDeck(ArrayList<UnoCard> cards) {
-        this.cards = cards.toArray(new UnoCard(cards.size())); // ???
-    }
+    // public void replaceDeck(ArrayList<UnoCard> cards) {
+    //     this.cards = cards.toArray(new UnoCard(cards.size())); // ???
+    // }
 
-    public void replaceDeck123(ArrayList<UnoCard> cards) {
+    public void replaceDeck(ArrayList<UnoCard> cards) {
         this.cards = cards.toArray(new UnoCard[cards.size()]);
         this.cardInDeck = this.cards.length;
     }
