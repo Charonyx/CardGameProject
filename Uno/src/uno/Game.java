@@ -70,7 +70,7 @@ public class Game {
             JLabel msgRe = new JLabel(playerID[currentPlayer] + "The game direction changed!");
             msgRe.setFont(new Font("Tahoma", Font.BOLD, 48));
             JOptionPane.showMessageDialog(null, msgRe);
-            gameDirect = true;
+            gameDirect ^= true;
             currentPlayer = playerID.length - 1;
         }
         stockPile.add(card);
@@ -178,13 +178,17 @@ public class Game {
                 msgWarnColor.setFont(new Font("Tahoma", Font.BOLD, 48));
                 JOptionPane.showMessageDialog(null, msgWarnColor);
                 // throw new InvalidColorSubmissionException(msgWarnColor, actual, expected);
-                throw new InvalidColorSubmissionException(msgWarnColor, actual, nowColor);
+                throw new InvalidColorSubmissionException(
+                        "Invalid player move, expected color: " + nowColor + " but got color " + card.getColor(),
+                        card.getColor(), nowColor);
             } else if (card.getValue() != nowValue) {
                 JLabel msgWarnValue = new JLabel(
                         "Invalid player move, expected value: " + nowValue + " but got value " + card.getValue());
                 msgWarnValue.setFont(new Font("Tahoma", Font.BOLD, 48));
                 JOptionPane.showMessageDialog(null, msgWarnValue);
-                throw new InvalidValueSubmissionException(msgWarnValue, card.getValue(), nowValue);
+                throw new InvalidValueSubmissionException(
+                        "Invalid player move, expected value: " + nowValue + " but got value " + card.getValue(),
+                        card.getValue(), nowValue);
             }
         }
         pHand.remove(card);

@@ -6,7 +6,9 @@
 package uno;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.*;
 
 /**
  *
@@ -18,12 +20,16 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        launch(args);
     }
 
     @Override
-    public void start(Stage arg0) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("~ Uno Card ~"));
+        Scene scence = new Scene(root);
+        stage.setScene(scence);
+        stage.setTitle("Uno");
+        stage.show();
     }
-    
+
 }
