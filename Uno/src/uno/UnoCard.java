@@ -11,21 +11,45 @@ package uno;
  */
 public class UnoCard {
 
-    enum color {
+    enum Color {
         Red, Blue, Yellow, Green, Wild;
-        private static final Color[] color = Color.value();
+
+        private static final Color[] color = Color.values();
 
         public static Color getColor(int i) {
             return Color.color[i];
         }
     }
 
-    enum value {
-        Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, DrawTwo, Reverse, Skip, WildFour;
-        private static final Value[] value = Value.value();
+    enum Value {
+        Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, PlusTwo, Reverse, Skip, Wild, WildFour;
+
+        private static final Value[] value = Value.values();
 
         public static Value getValue(int i) {
             return Value.value[i];
         }
     }
+
+    private final Color color;
+    private final Value value;
+
+    public UnoCard(final Color color, final Value value) {
+        this.color = color;
+        this.value = value;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public Value getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return "UnoCard [color=" + color + ", value=" + value + "]";
+    }
+
 }
