@@ -4,7 +4,7 @@ package loan;
 public class Loan {
 
     private double annualInterestRate;
-    private int numberOfYears;
+    private double numberOfYears;
     private double loanAmount;
     private java.util.Date loanDate;
 
@@ -19,7 +19,7 @@ public class Loan {
      * Construct a loan with specified annual interest rate, number of years,
      * and loan amount
      */
-    public Loan(double annualInterestRate, int numberOfYears,
+    public Loan(double annualInterestRate, double numberOfYears,
             double loanAmount) {
         this.annualInterestRate = annualInterestRate;
         this.numberOfYears = numberOfYears;
@@ -44,7 +44,7 @@ public class Loan {
     /**
      * Return numberOfYears
      */
-    public int getNumberOfYears() {
+    public double getNumberOfYears() {
         return numberOfYears;
     }
 
