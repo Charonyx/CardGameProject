@@ -17,7 +17,7 @@
       </ImageView>
       <VBox layoutX="643.0" layoutY="123.0" prefHeight="200.0" prefWidth="372.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#playAction" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="PLAY" textFill="#ff5353">
+            <Button fx:id="play" mnemonicParsing="false" onAction="#actionPlay" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="PLAY" textFill="#ff5353">
                <font>
                   <Font name="Cooper Black" size="31.0" />
                </font>
@@ -28,7 +28,7 @@
                   <Insets bottom="30.0" top="30.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#howtoplay" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="HOW TO PLAY" textFill="#ff4646">
+            <Button fx:id="howto" mnemonicParsing="false" onAction="#actionHowto" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="HOW TO PLAY" textFill="#ff4646">
                <font>
                   <Font name="Cooper Black" size="31.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Insets bottom="30.0" top="30.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="158.0" mnemonicParsing="false" onAction="#howtoplay" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="Director" textFill="#ff4646">
+            <Button fx:id="direct" layoutX="10.0" layoutY="158.0" mnemonicParsing="false" onAction="#actionDirect" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="Director" textFill="#ff4646">
                <font>
                   <Font name="Cooper Black" size="31.0" />
                </font>
@@ -50,7 +50,7 @@
                   <Insets bottom="30.0" top="30.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#exit" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="EXIT" textFill="#ff4646">
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#actionExit" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="EXIT" textFill="#ff4646">
                <font>
                   <Font name="Cooper Black" size="31.0" />
                </font>

@@ -38,6 +38,7 @@ public class HowtoController implements Initializable {
         root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

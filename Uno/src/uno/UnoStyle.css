@@ -8,3 +8,40 @@ and open the template in the editor.
     Author     : chura
 */
 
+.root{
+    -fx-background-color: violet;
+}
+
+.button{
+    -fx-background-color: bisque;
+    -fx-text-fill: blueviolet;
+    -fx-font-weight: bold;      
+    -fx-font-size: 20px;
+    
+}
+.button:hover{
+    -fx-background-color: black;
+    -fx-text-fill: greenyellow;
+    -fx-font-weight: bold;  
+    -fx-font-size: 20px;
+    -fx-animation: faded in;
+    -fx-transition: 0.5s;
+    /*-fx-animation: fade ease-in-out, 5.5s all;*/
+}
+.button:focus{
+    -fx-rotate: 10s;
+}
+
+/*#playNow{
+    fx-color:cyan;
+    color: green;
+    -fx-background-color: black;
+    -fx-text-fill: aquamarine;
+}*/
+
+.MenuBtn{
+
+}
+.MenuBtn:hover{
+    color: green;
+}

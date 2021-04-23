@@ -47,6 +47,7 @@ public class A_MainRun extends Application{
         root.getChildren().add(imageView);*/
         //scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Gafata%22");
         
+        scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
