@@ -9,7 +9,7 @@ import javax.swing.*;
 /**
  * game
  */
-public class Game {
+public class UnoGame {
 
     private int currentPlayer;
     private String[] playerID;
@@ -23,7 +23,7 @@ public class Game {
 
     boolean gameDirect;
 
-    public Game(String[] pid) {
+    public UnoGame(String[] pid) {
         deck = new UnoDeck();
         deck.shuffle();
         stockPile = new ArrayList<UnoCard>();
@@ -41,7 +41,7 @@ public class Game {
 
     }
 
-    public void start(Game game) {
+    public void start(UnoGame game) {
         UnoCard card = deck.drawCard();
         nowColor = card.getColor();
         nowValue = card.getValue();
