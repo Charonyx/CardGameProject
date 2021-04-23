@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.GameController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.PlayController">
    <children>
       <Label layoutX="317.0" layoutY="193.0" prefHeight="334.0" prefWidth="446.0" text="เกมการ์ดจ้า เล่นดิ ไม่เล่นอ้ะ เอ้า" textFill="WHITE">
          <font>

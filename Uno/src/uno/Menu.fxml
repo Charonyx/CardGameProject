@@ -5,38 +5,63 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.MenuController">
    <children>
-      <ImageView fitHeight="433.0" fitWidth="480.0" layoutX="107.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="433.0" fitWidth="480.0" layoutX="101.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../logonobg.png" />
          </image>
       </ImageView>
-      <Button layoutX="630.0" layoutY="183.0" mnemonicParsing="false" onAction="#play" prefHeight="67.0" prefWidth="259.0" style="-fx-background-color: WHITE;" text="PLAY" textFill="#ff5353">
-         <font>
-            <Font name="Cooper Black" size="31.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Button>
-      <Button layoutX="606.0" layoutY="312.0" mnemonicParsing="false" onAction="#howtoplay" prefHeight="67.0" prefWidth="308.0" style="-fx-background-color: WHITE;" text="HOW TO PLAY" textFill="#ff4646">
-         <font>
-            <Font name="Cooper Black" size="31.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Button>
-      <Button layoutX="630.0" layoutY="434.0" mnemonicParsing="false" onAction="#exit" prefHeight="67.0" prefWidth="259.0" style="-fx-background-color: WHITE;" text="EXIT" textFill="#ff4646">
-         <font>
-            <Font name="Cooper Black" size="31.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Button>
+      <VBox layoutX="643.0" layoutY="123.0" prefHeight="200.0" prefWidth="372.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#playAction" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="PLAY" textFill="#ff5353">
+               <font>
+                  <Font name="Cooper Black" size="31.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#howtoplay" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="HOW TO PLAY" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="31.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="158.0" mnemonicParsing="false" onAction="#howtoplay" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="Director" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="31.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#exit" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="EXIT" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="31.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
