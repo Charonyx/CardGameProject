@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.UIGameController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pic/test.png" />
+         </image>
+      </ImageView>
+      <BorderPane layoutX="-15.0" prefHeight="720.0" prefWidth="1094.0">
+         <left>
+            <AnchorPane prefHeight="368.0" prefWidth="198.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <AnchorPane prefHeight="720.0" prefWidth="226.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <AnchorPane prefHeight="171.0" prefWidth="1036.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox fx:id="GameBtn" layoutX="842.0" layoutY="77.0" prefHeight="75.0" prefWidth="252.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#useHit" prefHeight="39.0" prefWidth="101.0" text="HIT" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#useUno" prefHeight="40.0" prefWidth="100.0" text="UNO" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="HandCard" layoutX="206.0" layoutY="-1.0" prefHeight="174.0" prefWidth="622.0">
+                     <children>
+                        <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="#2395ff" height="169.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
+                        <Rectangle fx:id="card2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="169.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
+                        <Rectangle fx:id="card3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="169.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
+                        <Rectangle fx:id="card4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="169.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
+                        <Rectangle fx:id="card5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="169.0" stroke="BLACK" strokeType="INSIDE" width="121.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <top>
+            <AnchorPane prefHeight="178.0" prefWidth="1057.0" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <AnchorPane prefHeight="371.0" prefWidth="683.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Rectangle fx:id="deck" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="257.0" layoutX="422.0" layoutY="52.0" stroke="BLACK" strokeType="INSIDE" width="160.0" />
+                  <Rectangle fx:id="playcard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="253.0" layoutX="78.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" width="154.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
