@@ -20,6 +20,7 @@ public class UnoGame {
 
     private UnoCard.Color nowColor;
     private UnoCard.Value nowValue;
+    
 
     boolean gameDirect;
 

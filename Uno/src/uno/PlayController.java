@@ -6,7 +6,13 @@
 package uno;
 
 import java.awt.Font;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,6 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,6 +45,8 @@ public class PlayController implements Initializable {
     private Button home;
     @FXML
     private Button setName;
+    @FXML
+    private TextField name;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,31 +64,58 @@ public class PlayController implements Initializable {
     }
 
     @FXML
-    private void actionSetName(ActionEvent event)  throws IOException {
+    private void actionSetName(ActionEvent event) throws IOException {
 
 //        new AddPlayerNames().setVisible(true);
 //        this.dipose();
-        if (setName.getText().isBlank()) {
-            JLabel msg = new JLabel("Please enter your name");
-            msg.setFont(new Font("Tahoma", Font.BOLD, 48));
-            JOptionPane.showMessageDialog(null, msg);
-        } else {
-            String name = setName.getText().trim();
-
-            //save file txt
-            root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
-            stage.setScene(scene);
-            stage.show();
-
+        if (event.getSource() == setName) {
+            if (name.getText().isBlank()) {
+                System.out.println("nooo");
+//                JLabel msg = new JLabel("Please enter your name");
+//                msg.setFont(new Font("Tahoma", Font.BOLD, 48));
+//                JOptionPane.showMessageDialog(null, "oh nooooo");
+//                System.out.println(name.getText());
+//                System.out.println("1234"+String.format("%s", name));
+            } else {
+                String namePlayer = name.getText().trim();
+                System.out.println(name.getText());
+//                System.out.println("123"+String.format("%s", name));
+                double score = 100;
+                System.out.println(name.getText() + "," + score);
+                writeData(name.getText(), score);
+//                try {
+//                    FileWriter myWriter = new FileWriter("/data.txt");
+//                    myWriter.write("Files in Java might be tricky, but it is fun enough!");
+//                    myWriter.close();
+//                    System.out.println("Successfully wrote to the file.");
+//                } catch (IOException e) {
+//                    System.out.println("An error occurred.");
+//                    e.printStackTrace();
+//                }
+//                try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("name.dat"))) {
+//            out.writeObject(new ));
+//        }
+                //save file txt
+//                root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml"));
+                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
 //            Parent root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml")); //play
 //            Scene scene = new Scene(root);
 //            stage.setScene(scene);
 //            stage.setTitle("Engo");
 //            stage.show();
-        }
     }
 
+    static void writeData(String name, Double score) throws IOException, FileNotFoundException {
+        PrintWriter output = new PrintWriter(new File("/data.txt"));
+        output.write("test : ");
+        output.write(name + "," + score);
+        output.close();
+    }
 }

@@ -7,31 +7,44 @@ and open the template in the editor.
     Created on : Apr 24, 2021, 3:14:05 AM
     Author     : chura
 */
+*{
+    -fx-font-family: "Cooper Black";
+    /*src: url('CooperBlack.ttf');*/
+}
 
 .root{
     -fx-background-color: violet;
 }
+.menu{
+    /*-fx-background-image: url(../logo.png);*/
 
-.button{
-    -fx-background-color: bisque;
+}
+
+.menu .button{
+    -fx-background-color: plum;
+    -fx-background-radius: 50;
+    /*-fx-background-insets: 10;*/
+    /*-fx-background-image: url(../img/btn.png);*/
+     
     -fx-text-fill: blueviolet;
     -fx-font-weight: bold;      
-    -fx-font-size: 20px;
-    -fx-border-radius: 25%;
-   
+    -fx-font-size: 20;
 }
+
 .button:hover{
-    -fx-background-color: black;
+    -fx-background-color: fuchsia;
+    -fx-background-radius: 50;
     -fx-text-fill: greenyellow;
-    -fx-font-weight: bold;  
-    -fx-font-size: 20px;
+    /*-fx-text-fill: linear-gradient(white, #d0d0d0);*/
     -fx-animation: faded in;
-    -fx-transition: 0.5s;
-    /*-fx-animation: fade ease-in-out, 5.5s all;*/
-    -fx-
+    -fx-transition: 2;
+    -fx-rotate: 7;
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 30, 0.0 , 0 , 1);
 }
-.button:focus{
-    -fx-rotate: 10s;
+
+.button:pressed{
+    /*-fx-background-color: white;*/
+    -fx-rotate: 10;
 }
 
 /*#playNow{
@@ -41,9 +54,18 @@ and open the template in the editor.
     -fx-text-fill: aquamarine;
 }*/
 
-.MenuBtn{
-
+.progessBar{
+    -fx-width: 100;
 }
-.MenuBtn:hover{
-    color: green;
+
+
+.progress-bar > .bar {
+    -fx-background-color: linear-gradient(
+        from 0px .75em to .75em 0px,
+        repeat,
+        -fx-accent 0%,
+        -fx-accent 49%,
+        derive(-fx-accent, 30%) 50%,
+        derive(-fx-accent, 30%) 99%
+    );
 }

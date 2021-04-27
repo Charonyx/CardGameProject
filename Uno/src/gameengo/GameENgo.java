@@ -9,6 +9,7 @@
 //import javafx.fxml.FXMLLoader;
 //import javafx.scene.Parent;
 //import javafx.scene.Scene;
+//import javafx.scene.shape.Rectangle;
 //import javafx.stage.Stage;
 //
 ///**
@@ -27,7 +28,7 @@
 //    @Override
 //    public void start(Stage stage) throws Exception {
 //        //game = new Game();
-//        Parent root = FXMLLoader.load(getClass().getResource("MAIN.fxml")); //play
+//        Parent root = FXMLLoader.load(getClass().getResource("MAIN.fxml"));
 //        Scene scene = new Scene(root);
 //        stage.setScene(scene);
 //        stage.setTitle("Engo");

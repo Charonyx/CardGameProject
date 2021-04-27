@@ -5,63 +5,58 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.MenuController">
+<AnchorPane id="AnchorPane" fx:id="menuScene" prefHeight="720.0" prefWidth="1080.0" styleClass="menu" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.MenuController">
    <children>
-      <ImageView fitHeight="433.0" fitWidth="480.0" layoutX="101.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../logonobg.png" />
-         </image>
-      </ImageView>
-      <VBox layoutX="643.0" layoutY="123.0" prefHeight="200.0" prefWidth="372.0">
+      <HBox alignment="CENTER" prefHeight="535.0" prefWidth="1080.0">
          <children>
-            <Button fx:id="play" mnemonicParsing="false" onAction="#actionPlay" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="PLAY" textFill="#ff5353">
+            <ImageView fitHeight="433.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logonobg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutY="574.0" prefHeight="50.0" prefWidth="1080.0" spacing="20.0">
+         <children>
+            <Button fx:id="play" mnemonicParsing="false" onAction="#actionPlay" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="PLAY" textFill="#ff5353">
                <font>
-                  <Font name="Cooper Black" size="31.0" />
+                  <Font name="Cooper Black" size="21.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="30.0" top="30.0" />
-               </VBox.margin>
             </Button>
-            <Button fx:id="howto" mnemonicParsing="false" onAction="#actionHowto" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="HOW TO PLAY" textFill="#ff4646">
+            <Button fx:id="howto" mnemonicParsing="false" onAction="#actionHowto" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="HOW TO PLAY" textFill="#ff4646">
                <font>
-                  <Font name="Cooper Black" size="31.0" />
+                  <Font name="Cooper Black" size="21.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="30.0" top="30.0" />
-               </VBox.margin>
             </Button>
-            <Button fx:id="direct" layoutX="10.0" layoutY="158.0" mnemonicParsing="false" onAction="#actionDirect" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="Director" textFill="#ff4646">
+            <Button fx:id="direct" mnemonicParsing="false" onAction="#actionDirect" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="Director" textFill="#ff4646">
                <font>
-                  <Font name="Cooper Black" size="31.0" />
+                  <Font name="Cooper Black" size="21.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="30.0" top="30.0" />
-               </VBox.margin>
             </Button>
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#actionExit" prefHeight="67.0" prefWidth="310.0" style="-fx-background-color: WHITE;" text="EXIT" textFill="#ff4646">
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#actionExit" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="EXIT" textFill="#ff4646">
                <font>
-                  <Font name="Cooper Black" size="31.0" />
+                  <Font name="Cooper Black" size="21.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="30.0" top="30.0" />
-               </VBox.margin>
             </Button>
          </children>
-      </VBox>
+         <padding>
+            <Insets left="100.0" right="100.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>
