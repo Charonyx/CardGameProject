@@ -27,7 +27,7 @@ public class A_MainRun extends Application {
 //        Parent root = loader.load();
 
         Pane root2 = new Pane();
-        ImageView background = new ImageView(new Image("logo.png", 1080, 720, false, true));
+        ImageView background = new ImageView(new Image("img/logo.png", 1080, 720, false, true));
         root2.getChildren().add(background);
 
         //Group root = new Group();

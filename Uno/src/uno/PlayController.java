@@ -5,16 +5,20 @@
  */
 package uno;
 
+import data.DataFile;
 import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.LineNumberReader;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import data.DataFile;
 
 /**
  * FXML Controller class
@@ -71,38 +76,39 @@ public class PlayController implements Initializable {
         if (event.getSource() == setName) {
             if (name.getText().isBlank()) {
                 System.out.println("nooo");
-//                JLabel msg = new JLabel("Please enter your name");
+//                JLabel msg = new JLabel("Please en    ter your name");
 //                msg.setFont(new Font("Tahoma", Font.BOLD, 48));
 //                JOptionPane.showMessageDialog(null, "oh nooooo");
 //                System.out.println(name.getText());
 //                System.out.println("1234"+String.format("%s", name));
             } else {
                 String namePlayer = name.getText().trim();
-                System.out.println(name.getText());
+                System.out.println("name" + name.getText());
+//                System.out.println(haveFile());
 //                System.out.println("123"+String.format("%s", name));
-                double score = 100;
+                double score = 0;
                 System.out.println(name.getText() + "," + score);
-                writeData(name.getText(), score);
-//                try {
-//                    FileWriter myWriter = new FileWriter("/data.txt");
-//                    myWriter.write("Files in Java might be tricky, but it is fun enough!");
-//                    myWriter.close();
-//                    System.out.println("Successfully wrote to the file.");
-//                } catch (IOException e) {
-//                    System.out.println("An error occurred.");
-//                    e.printStackTrace();
-//                }
+                //DataFile(name.getText(),score);
+
+                DataFile data = new DataFile(name.getText(),score);
+                data.writeData();
+                data.readData();
 //                try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("name.dat"))) {
 //            out.writeObject(new ));
 //        }
+
+
                 //save file txt
-//                root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml"));
-                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                
+                
+                root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml"));
+//                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
                 stage.setScene(scene);
                 stage.show();
+
             }
         }
 //            Parent root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml")); //play
@@ -112,10 +118,6 @@ public class PlayController implements Initializable {
 //            stage.show();
     }
 
-    static void writeData(String name, Double score) throws IOException, FileNotFoundException {
-        PrintWriter output = new PrintWriter(new File("/data.txt"));
-        output.write("test : ");
-        output.write(name + "," + score);
-        output.close();
-    }
+   
+        
 }
