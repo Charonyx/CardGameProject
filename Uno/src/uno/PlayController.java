@@ -7,15 +7,7 @@ package uno;
 
 import data.DataFile;
 import java.awt.Font;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -37,6 +29,7 @@ import data.DataFile;
  * FXML Controller class
  *
  * @author ROG
+ * @author chura
  */
 public class PlayController implements Initializable {
 
@@ -84,23 +77,19 @@ public class PlayController implements Initializable {
             } else {
                 String namePlayer = name.getText().trim();
                 System.out.println("name" + name.getText());
+                DataFile collectName = new DataFile(name.getText());
 //                System.out.println(haveFile());
 //                System.out.println("123"+String.format("%s", name));
-                double score = 0;
-                System.out.println(name.getText() + "," + score);
-                //DataFile(name.getText(),score);
-
-                DataFile data = new DataFile(name.getText(),score);
+                int score = 0;
+                System.out.println(name.getText() + "," + score);               
+                DataFile data = new DataFile(name.getText(), score);
                 data.writeData();
                 data.readData();
 //                try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("name.dat"))) {
 //            out.writeObject(new ));
 //        }
 
-
                 //save file txt
-                
-                
                 root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml"));
 //                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -111,13 +100,6 @@ public class PlayController implements Initializable {
 
             }
         }
-//            Parent root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml")); //play
-//            Scene scene = new Scene(root);
-//            stage.setScene(scene);
-//            stage.setTitle("Engo");
-//            stage.show();
     }
 
-   
-        
 }

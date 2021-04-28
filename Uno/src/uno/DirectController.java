@@ -20,27 +20,26 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author ROG
+ * @author chura
  */
-public class HowtoController implements Initializable {
+public class DirectController implements Initializable {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
+    @FXML
     private void actionBack(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
-
 
 }
