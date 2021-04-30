@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game;
+package uno;
 
 import com.sun.javafx.logging.PlatformLogger.Level;
 import java.io.*;
@@ -91,10 +91,8 @@ public class RankController implements Initializable {
         score4.setText(Integer.toString(leaderScore.get(3)));
         score5.setText(Integer.toString(leaderScore.get(4)));
     }
-    
 
 //    @FXML
 //    private void actionBack(ActionEvent event) {
 //    }
-
 }
