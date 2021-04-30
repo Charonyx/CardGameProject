@@ -22,6 +22,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class Game {
 
+    private String textName;
     private int currentPlayer;
     private String[] playerID;
 
@@ -61,7 +62,7 @@ public class Game {
         UnoCard card = deck.drawCard();
         nowColor = card.getColor();
         nowValue = card.getValue();
-        
+
         if (card.getValue() == UnoCard.Value.Wild) {
             start(game);
         }
@@ -162,39 +163,37 @@ public class Game {
             throw new InvalidPlayerTurnException("It isn't " + pid + " 's turn", pid);
         }
     }*/
-
-    public void submitDraw(String playerName,ArrayList<Rectangle> rect,UnoCard drawCard,HBox hbox){
+    public void submitDraw(String playerName, ArrayList<Rectangle> rect, UnoCard drawCard, HBox hbox) {
         //checkPlayerTurn(pid);
-        
+
         if (deck.isEmpty()) {
             deck.replaceDeck(stockPile);
             deck.shuffle();
         }
-        
+
         Rectangle newCardRect = new Rectangle();
-        
+
         rect.add(newCardRect);
         getPlayerHand(playerName).add(deck.drawCard());
-        
-        
+
         newCardRect.setFill(Color.AQUA);
         newCardRect.setWidth(119.0f);
         newCardRect.setHeight(159.0f);
-        
+
         int count = 0;
 
-            for (UnoCard.Color color : drawCard.colors) {
-                if (drawCard.getColor().equals(drawCard.colors[count])) {
-                        System.out.println("/pic/" + drawCard.getValueToInt() + picName[count]+ ".png");
-                        newCardRect.setFill(new ImagePattern(deck.drawCardImage(drawCard,picName[count])));
-                    }
-                count++;
+        for (UnoCard.Color color : drawCard.colors) {
+            if (drawCard.getColor().equals(drawCard.colors[count])) {
+                System.out.println("/pic/" + drawCard.getValueToInt() + picName[count] + ".png");
+                newCardRect.setFill(new ImagePattern(deck.drawCardImage(drawCard, picName[count])));
             }
-            
+            count++;
+        }
+
         hbox.getChildren().add(newCardRect);
 //        hbox.setma
 //        newCardRect.setStyle("-fx-margin-left: -50;");
-        
+
         if (gameDirection == false) {
             currentPlayer = (currentPlayer + 1) % playerID.length;
         } else if (gameDirection == true) {
@@ -207,6 +206,14 @@ public class Game {
 
     public void setCardColor(UnoCard.Color color) {
         nowColor = color;
+    }
+
+    public String getName() {
+        return textName;
+    }
+
+    public void setName(String name) {
+        this.textName = name;
     }
 
     /*public void submitPlayerCard(String pid, UnoCard nowCard, UnoCard playerCard,Rectangle cardRect,Rectangle nowCardRect,HBox playerBox)
@@ -323,11 +330,11 @@ public class Game {
             }
         }
     }*/
-
     class InvalidPlayerTurnException extends Exception {
 
         String playerID;
         Label warningMsg;
+
         public InvalidPlayerTurnException(String msg, String pid) {
             super(msg);
             playerID = pid;
@@ -365,14 +372,30 @@ public class Game {
         }
 
     }
-    public boolean getGameDirection() {
-            return this.gameDirection;
-        }
-    
-    public void setTopCard(UnoCard topCard) {
-        
+
+    public Game(String textName) {
+        this.textName = textName;
+    }   
+
+    public String getTextName() {
+        return textName;
     }
-public ImagePattern getTopCardPic(Rectangle topCard) { 
+
+    public void setTextName(String textName) {
+        
+        this.textName = textName;
+    }
+    
+    public boolean getGameDirection() {
+        return this.gameDirection;
+    }
+
+    public void setTopCard(UnoCard topCard) {
+
+    }
+
+    public ImagePattern getTopCardPic(Rectangle topCard) {
         return (ImagePattern) topCard.getFill();
     }
+    
 }

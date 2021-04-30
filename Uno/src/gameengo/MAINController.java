@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,13 +22,31 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-
+import game.PlayController;
 /**
  * FXML Controller class
  *
  * @author USER
  */
 public class MAINController implements Initializable {
+
+//    private String textName;
+//
+//    public MAINController(String textName) {
+//        this.textName = textName;
+//    }
+//
+//    public String getTextName() {
+//        return textName;
+//    }
+//
+//    public void setTextName(String textName) {
+//        this.textName = textName;
+//    }
+    private String textName = "churairat";
+    
+    @FXML
+    private TextField name;
 
     //private RectanglenowCardRect;
     @FXML
@@ -58,7 +77,7 @@ public class MAINController implements Initializable {
     private UnoDeck deck = new UnoDeck();
 
     char[] picName = {'A', 'B', 'C', 'D', 'E'};
-    
+
     @FXML
     private Rectangle card7;
     @FXML
@@ -97,6 +116,10 @@ public class MAINController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //nowCardRect.setFill(new ImagePattern(imageBlue1));
         //this.addTexture();
+        /// SET NAME-----------------------------------------------------
+        name.setText(String.format("%s", textName));
+        System.out.println("PlayerName : " + textName);
+        /// END SET NAME-----------------------------------------------------
         game = new Game(playerName);
         //game.start(game);
 
@@ -144,12 +167,11 @@ public class MAINController implements Initializable {
         r1 = rand.nextInt(2) + 1;
 
         UnoCard CardDraw;
-       // System.out.println("card8: " + card8.getFill().isOpaque());
+        // System.out.println("card8: " + card8.getFill().isOpaque());
         boolean isFilledImage = false;
-            CardDraw = game.getDeck().drawCard();
-            
-            game.submitDraw(playerName[0], playerHand,CardDraw, playerBox);
-            
+        CardDraw = game.getDeck().drawCard();
+
+        game.submitDraw(playerName[0], playerHand, CardDraw, playerBox);
 
         //playerBox.getChildren().add(card7);
     }
