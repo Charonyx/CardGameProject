@@ -7,49 +7,87 @@ package uno;
 
 /**
  *
- * @author chura
+ * @author USER
  */
 public class UnoCard {
 
-    enum Color {
+    public enum Color {
         Red, Blue, Yellow, Green, Wild;
 
-        private static final Color[] color = Color.values();
-
-        public static Color getColor(int i) {
-            return Color.color[i];
-        }
     }
 
-    enum Value {
-        Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, PlusTwo, Reverse, Skip, Wild, WildFour;
-
-        private static final Value[] value = Value.values();
-
-        public static Value getValue(int i) {
-            return Value.value[i];
-        }
+    public enum Value {
+        Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine,
+        PlusTwo, Reverse, Skip, Wild, WildFour;
+        
     }
 
-    private final Color color;
-    private final Value value;
+    private Color color;
 
-    public UnoCard(final Color color, final Value value) {
+    public void setColor(Color color) {
         this.color = color;
+    }
+
+    public void setValue(Value value) {
         this.value = value;
     }
+    Value value;
+    public Color[] colors = Color.values();
+    public Value[] values = Value.values();
 
-    public Color getColor() {
+    public UnoCard() {
+    }
+
+    public UnoCard(Color color, Value value) {
+
+        this.color = color;
+        this.value = value;
+
+    }
+
+    public UnoCard.Color getColor() {
         return color;
     }
 
-    public Value getValue() {
+    public UnoCard.Value getValue() {
         return value;
     }
 
+    public UnoCard.Value getValue(int i) {
+        return values[i];
+    }
+    
+    public UnoCard.Color getColor(int i ){
+        return colors[i];
+    }
+    
     @Override
     public String toString() {
-        return "UnoCard [color=" + color + ", value=" + value + "]";
+        return "UnoCard [ Color :" + color + " , value :" + value + "]"; //To change body of generated methods, choose Tools | Templates.
     }
 
+    public int cardValue(UnoCard.Value cardValue){
+        if(cardValue == Value.PlusTwo || cardValue == Value.Wild || cardValue == value.WildFour){
+            return 10;
+        }
+        else{
+            return cardValue.ordinal();
+        }
+    }
+    public int getColorToInt(){
+            return color.ordinal();
+    }
+    public int getValueToInt(int i){
+            return this.values[i].ordinal();
+    }
+    
+    public int getValueToInt(){
+            return this.value.ordinal();
+    }
+    
+    public void setColorAndValue(UnoCard.Color color ,UnoCard.Value value){
+        this.color = color;
+        this.value = value;
+    }
+    
 }

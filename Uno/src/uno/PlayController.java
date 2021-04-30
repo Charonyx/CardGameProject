@@ -116,7 +116,7 @@ public class PlayController implements Initializable {
                 wScore.writeInt(0);
                 wScore.close();
 
-                root = FXMLLoader.load(getClass().getResource( "../gameengo/MAIN.fxml"));
+                root = FXMLLoader.load(getClass().getResource( "MAIN.fxml"));
 //                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
