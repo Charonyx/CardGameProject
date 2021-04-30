@@ -33,6 +33,7 @@ public class HowtoController implements Initializable {
         // TODO
     }
 
+    @FXML
     private void actionBack(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

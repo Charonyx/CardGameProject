@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import data.DataFile;
+import java.util.ArrayList;
 
 /**
  * FXML Controller class
@@ -51,7 +52,7 @@ public class PlayController implements Initializable {
         // TODO
     }
 
-    @FXML
+     @FXML
     private void actionBack(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -62,7 +63,7 @@ public class PlayController implements Initializable {
     }
 
     @FXML
-    private void actionSetName(ActionEvent event) throws IOException {
+    private void actionSetName(ActionEvent event) throws IOException, ClassNotFoundException {
 
 //        new AddPlayerNames().setVisible(true);
 //        this.dipose();
@@ -75,22 +76,47 @@ public class PlayController implements Initializable {
 //                System.out.println(name.getText());
 //                System.out.println("1234"+String.format("%s", name));
             } else {
-                String namePlayer = name.getText().trim();
-                System.out.println("name" + name.getText());
-                DataFile collectName = new DataFile(name.getText());
-//                System.out.println(haveFile());
-//                System.out.println("123"+String.format("%s", name));
-                int score = 0;
-                System.out.println(name.getText() + "," + score);               
-                DataFile data = new DataFile(name.getText(), score);
-                data.writeData();
-                data.readData();
+//                String namePlayer = name.getText().trim();
+//                System.out.println("name" + name.getText());
+//                DataFile collectName = new DataFile(name.getText());
+////                System.out.println(haveFile());
+////                System.out.println("123"+String.format("%s", name));
+//                int score = 0;
+//                System.out.println(name.getText() + "," + score);               
+//                DataFile data = new DataFile(name.getText(), score);
+//                data.writeData();
+//                data.readData();
+
+//                /---------------SEND NAME TO GAME SCENE------------------
+//                textName = name.getText();
 //                try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("name.dat"))) {
 //            out.writeObject(new ));
 //        }
-
                 //save file txt
-                root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml"));
+                ObjectOutputStream wName = new ObjectOutputStream(new FileOutputStream( "../Uno/src/data/name.dat"));
+                DataOutputStream wScore = new DataOutputStream(new FileOutputStream( "../Uno/src/data/score.dat"));
+//                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FXML+"data/nameOfBot.dat"));
+//                DataInputStream rPlayer = new DataInputStream(new FileInputStream(DATA_FXML+"data/player.dat"));
+
+                ArrayList<String> nameArrayList = new ArrayList<>();
+
+//                int num = rPlayer.readInt();
+//                rPlayer.close();
+//                ArrayList<String> botName = (ArrayList<String>) ois.readObject();
+//                ois.close();
+                nameArrayList.add(name.getText());
+//                for (int i = 1; i <= num; i++) {
+//                    String st = botName.get((int) (Math.random() * botName.size()));
+//                    a.add(st);
+//                    botName.remove(a);
+//                }
+                wName.writeObject(nameArrayList);
+                wName.close();
+
+                wScore.writeInt(0);
+                wScore.close();
+
+                root = FXMLLoader.load(getClass().getResource( "../gameengo/MAIN.fxml"));
 //                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
