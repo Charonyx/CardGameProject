@@ -10,9 +10,14 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -23,6 +28,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import static uno.Music.*;
 
 /**
  * FXML Controller class
@@ -59,6 +66,9 @@ public class MAINController implements Initializable {
 
     char[] picName = {'A', 'B', 'C', 'D', 'E'};
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
     @FXML
     private Rectangle card7;
     @FXML
@@ -90,7 +100,13 @@ public class MAINController implements Initializable {
     @FXML
     private AnchorPane selectWildScene;
     @FXML
+    private AnchorPane gameover;
+    @FXML
+    private AnchorPane winner;
+    @FXML
     private TextField name;
+    @FXML
+    private Button back;
 
     public enum Value {
         Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine,
@@ -140,6 +156,8 @@ public class MAINController implements Initializable {
         name.setText(String.format("%s", playerName));
 //            System.out.println("PlayerName : " + playerName);
         //-------------------------------------------------------
+        gameover.setVisible(false);
+        winner.setVisible(false);
 
         //nowCardRect.setFill(new ImagePattern(imageBlue1));
         //this.addTexture();
@@ -272,5 +290,17 @@ public class MAINController implements Initializable {
             nowCardPlay.setColor(UnoCard.Color.Green);
         }
         selectWildScene.setVisible(false);
+    }
+
+    @FXML
+    private void actionBack(ActionEvent event) throws IOException {
+        mediaGame.stop();
+        
+        root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
     }
 }

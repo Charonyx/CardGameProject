@@ -25,6 +25,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import data.DataFile;
 import java.util.ArrayList;
+import javafx.scene.media.*;
+import javafx.util.Duration;
+import static uno.Music.*;
 
 /**
  * FXML Controller class
@@ -37,9 +40,6 @@ public class PlayController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Stage stage1;
-    private Scene scene1;
-    private Parent root1;
     @FXML
     private Button home;
     @FXML
@@ -52,8 +52,14 @@ public class PlayController implements Initializable {
         // TODO
     }
 
-     @FXML
+    @FXML
     private void actionBack(ActionEvent event) throws IOException {
+        mediaMenu.stop();
+//        mediaRank.stop();
+//        mediaDirect.stop();
+//        mediaHowto.stop();
+//        mediaGame.stop();
+
         root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -64,18 +70,31 @@ public class PlayController implements Initializable {
 
     @FXML
     private void actionSetName(ActionEvent event) throws IOException, ClassNotFoundException {
-
 //        new AddPlayerNames().setVisible(true);
 //        this.dipose();
         if (event.getSource() == setName) {
             if (name.getText().isBlank()) {
                 System.out.println("nooo");
+                
+//                alerr
 //                JLabel msg = new JLabel("Please en    ter your name");
 //                msg.setFont(new Font("Tahoma", Font.BOLD, 48));
 //                JOptionPane.showMessageDialog(null, "oh nooooo");
 //                System.out.println(name.getText());
 //                System.out.println("1234"+String.format("%s", name));
             } else {
+                mediaMenu.stop();
+
+                Media sound = new Media(new File(musicGame).toURI().toString());
+                mediaGame = new MediaPlayer(sound);
+                mediaGame.setOnEndOfMedia(new Runnable() {
+                    public void run() {
+                        mediaGame.seek(Duration.ZERO);
+                    }
+                });
+                mediaGame.play();
+                mediaGame.setVolume(musicVolumn);
+
 //                String namePlayer = name.getText().trim();
 //                System.out.println("name" + name.getText());
 //                DataFile collectName = new DataFile(name.getText());
@@ -86,15 +105,14 @@ public class PlayController implements Initializable {
 //                DataFile data = new DataFile(name.getText(), score);
 //                data.writeData();
 //                data.readData();
-
 //                /---------------SEND NAME TO GAME SCENE------------------
 //                textName = name.getText();
 //                try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("name.dat"))) {
 //            out.writeObject(new ));
 //        }
                 //save file txt
-                ObjectOutputStream wName = new ObjectOutputStream(new FileOutputStream( "../Uno/src/data/name.dat"));
-                DataOutputStream wScore = new DataOutputStream(new FileOutputStream( "../Uno/src/data/score.dat"));
+                ObjectOutputStream wName = new ObjectOutputStream(new FileOutputStream("../Uno/src/data/name.dat"));
+                DataOutputStream wScore = new DataOutputStream(new FileOutputStream("../Uno/src/data/score.dat"));
 //                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FXML+"data/nameOfBot.dat"));
 //                DataInputStream rPlayer = new DataInputStream(new FileInputStream(DATA_FXML+"data/player.dat"));
 
@@ -116,7 +134,7 @@ public class PlayController implements Initializable {
                 wScore.writeInt(0);
                 wScore.close();
 
-                root = FXMLLoader.load(getClass().getResource( "MAIN.fxml"));
+                root = FXMLLoader.load(getClass().getResource("MAIN.fxml"));
 //                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);

@@ -5,7 +5,7 @@
  */
 package uno;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,7 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.media.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import static uno.Music.*;
 
 /**
  * FXML Controller class
@@ -30,11 +33,13 @@ public class HowtoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        mediaMenu.stop();
     }
 
     @FXML
     private void actionBack(ActionEvent event) throws IOException {
+        mediaHowto.stop();
+
         root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -42,6 +47,5 @@ public class HowtoController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
 
 }
