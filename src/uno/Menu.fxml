@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="menuScene" maxHeight="720.0" maxWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" styleClass="menu" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.MenuController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/menu.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutY="574.0" prefHeight="50.0" prefWidth="1080.0" spacing="20.0">
+         <children>
+            <Button fx:id="play" mnemonicParsing="false" onAction="#actionPlay" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="PLAY" textFill="#ff5353">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="howto" mnemonicParsing="false" onAction="#actionHowto" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="HOW TO PLAY" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="direct" mnemonicParsing="false" onAction="#actionDirect" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="Director" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#actionExit" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="EXIT" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="100.0" right="100.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
