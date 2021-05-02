@@ -154,14 +154,14 @@ public class Game {
         if (!this.getCurrentPlayer().equals(playerID[1])) {
             for (UnoCard.Color color : drawCard.colors) {
                 if (drawCard.getColor().equals(drawCard.colors[count])) {
-                    System.out.println("/pics/" + drawCard.getValueToInt() + picName[count] + ".png");
+                    System.out.println("../Uno/src/img/" + drawCard.getValueToInt() + picName[count] + ".png");
                     newCardRect.setFill(new ImagePattern(deck.drawCardImage(drawCard, picName[count])));
                 }
                 count++;
             }
         } else {
 
-            newCardRect.setFill(new ImagePattern(new Image("/pic/back.png")));
+            newCardRect.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
             newCardRect.setRotate(180.0);
         }
 
@@ -217,7 +217,7 @@ public class Game {
                 int count = 0;
                 for (UnoCard.Color color : playerCard.colors) {
                     if (playerCard.getColor().equals(playerCard.colors[count])) {
-                        System.out.println("/pics/" + playerCard.getValueToInt() + picName[count] + ".png");
+                        System.out.println("../Uno/src/img/" + playerCard.getValueToInt() + picName[count] + ".png");
                         nowCardRect.setFill(new ImagePattern(deck.drawCardImage(playerCard, picName[count])));
                     }
                     count++;

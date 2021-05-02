@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="menuScene" prefHeight="720.0" prefWidth="1080.0" styleClass="menu" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.MenuController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="1112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/menu.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="1080.0" spacing="20.0" AnchorPane.topAnchor="576.0">
+         <children>
+            <Button fx:id="play" mnemonicParsing="false" onAction="#actionPlay" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="PLAY" textFill="#ff5353">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="howto" mnemonicParsing="false" onAction="#actionHowto" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="HOW TO PLAY" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="direct" mnemonicParsing="false" onAction="#actionDirect" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="Director" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#actionExit" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="EXIT" textFill="#ff4646">
+               <font>
+                  <Font name="Cooper Black" size="21.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="100.0" right="100.0" />
+         </padding>
+      </HBox>
+      <Button fx:id="rank" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#actionRank" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="RANK" textFill="#ff5353" visible="false">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <ImageView fx:id="hoverPlay" blendMode="SRC_ATOP" cache="true" fitHeight="100.0" fitWidth="50.0" opacity="0.91" pickOnBounds="true" preserveRatio="true" rotate="9.5" x="185.0" y="535.0">
+         <image>
+            <Image url="@../img/crown2.png" />
+         </image>
+         <effect>
+            <DropShadow color="#2430ff" height="29.9" radius="12.225" />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="hoverDirect" blendMode="SRC_ATOP" cache="true" fitHeight="100.0" fitWidth="50.0" opacity="0.91" pickOnBounds="true" preserveRatio="true" rotate="9.5" x="635.0" y="535.0">
+         <image>
+            <Image url="@../img/crown2.png" />
+         </image>
+         <effect>
+            <DropShadow color="#2430ff" height="29.9" radius="12.225" />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="hoverExit" blendMode="SRC_ATOP" cache="true" fitHeight="100.0" fitWidth="50.0" opacity="0.91" pickOnBounds="true" preserveRatio="true" rotate="9.5" x="856.0" y="535.0">
+         <image>
+            <Image url="@../img/crown2.png" />
+         </image>
+         <effect>
+            <DropShadow color="#2430ff" height="29.9" radius="12.225" />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="hoverHowto" blendMode="SRC_ATOP" cache="true" fitHeight="100.0" fitWidth="50.0" opacity="0.91" pickOnBounds="true" preserveRatio="true" rotate="9.5" x="410.0" y="535.0">
+         <image>
+            <Image url="@../img/crown2.png" />
+         </image>
+         <effect>
+            <DropShadow color="#2430ff" height="29.9" radius="12.225" />
+         </effect>
+      </ImageView>
+      <AnchorPane id="AnchorPane" fx:id="loaderScene" prefHeight="720.0" prefWidth="1080.0" styleClass="loader">
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/loader2.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="720.0" prefWidth="1080.0">
+               <children>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="720.0" prefWidth="1080.0">
+                     <children>
+                        <ProgressBar fx:id="loaderBar" prefHeight="70.0" prefWidth="900.0" progress="0.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ProgressBar>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="70.0" top="500.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1080.0" AnchorPane.bottomAnchor="57.0">
+               <children>
+                  <Label text="Downloading." textFill="#63008d">
+                     <padding>
+                        <Insets right="70.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1080.0" AnchorPane.bottomAnchor="57.0">
+               <children>
+                  <Label fx:id="load1" text="." textFill="#63008d">
+                     <padding>
+                        <Insets right="70.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets right="-305.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1080.0" AnchorPane.bottomAnchor="57.0">
+               <children>
+                  <Label fx:id="load2" text="." textFill="#63008d">
+                     <padding>
+                        <Insets right="70.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets right="-330.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

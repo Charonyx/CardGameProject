@@ -169,8 +169,8 @@ public class MAINController implements Initializable {
 
                         if (game.getPlayerHand(playerName[0]).get(i).getValue().equals(card.getValue(j++))) {
                             System.out.println(game.getPlayerHand(playerName[0]).get(i).toString());
-                            System.out.println("/pics/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
-                            imageCardInit[i] = new Image("/pics/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
+                            System.out.println("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
+                            imageCardInit[i] = new Image("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
                         }
                     }
                 }
@@ -340,13 +340,13 @@ public class MAINController implements Initializable {
         card6.setFill(new ImagePattern(image[5]));
         card7.setFill(new ImagePattern(image[6]));
 
-        botCard.setFill(new ImagePattern(new Image("/pic/back.png")));
-        botCard2.setFill(new ImagePattern(new Image("/pic/back.png")));
-        botCard3.setFill(new ImagePattern(new Image("/pic/back.png")));
-        botCard4.setFill(new ImagePattern(new Image("/pic/back.png")));
-        botCard5.setFill(new ImagePattern(new Image("/pic/back.png")));
-        botCard6.setFill(new ImagePattern(new Image("/pic/back.png")));
-        botCard7.setFill(new ImagePattern(new Image("/pic/back.png")));
+        botCard.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
+        botCard2.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
+        botCard3.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
+        botCard4.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
+        botCard5.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
+        botCard6.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
+        botCard7.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
     }
 
     @FXML
