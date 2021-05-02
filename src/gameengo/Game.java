@@ -31,6 +31,7 @@ public class Game {
     private String[] playerID;
 
     private UnoDeck deck;
+    private HBox botBox;
 
     public UnoDeck getDeck() {
         return deck;
@@ -42,6 +43,8 @@ public class Game {
     private UnoCard.Value nowValue;
     private UnoCard topCard;
     private boolean gameDirection;
+    private Image imageInCardRect;
+
     char[] picName = {'A', 'B', 'C', 'D', 'E'};
     private ArrayList<ArrayList<Rectangle>> playerRect;
 
@@ -50,6 +53,7 @@ public class Game {
         return playerRect.get(index);
     }
     private boolean isPressedEngoButton = false;
+    private ArrayList<Rectangle> botRect;
 
     public Game(String[] player_ID) { // initialgame
         deck = new UnoDeck(); // creat 108 cards 
@@ -103,7 +107,6 @@ public class Game {
 
     public ArrayList<UnoCard> getPlayerHand(String pid) {
         int index = Arrays.asList(playerID).indexOf(pid);
-        //System.out.println("??? : " + playerHand.get(index));
         return playerHand.get(index);
     }
 
@@ -154,8 +157,9 @@ public class Game {
         if (!this.getCurrentPlayer().equals(playerID[1])) {
             for (UnoCard.Color color : drawCard.colors) {
                 if (drawCard.getColor().equals(drawCard.colors[count])) {
-                    System.out.println("/pics/" + drawCard.getValueToInt() + picName[count] + ".png");
+//                    System.out.println("/pics/" + drawCard.getValueToInt() + picName[count] + ".png");
                     newCardRect.setFill(new ImagePattern(deck.drawCardImage(drawCard, picName[count])));
+                    this.imageInCardRect = deck.drawCardImage(drawCard, picName[count]);
                 }
                 count++;
             }
@@ -168,8 +172,9 @@ public class Game {
         newCardRect.setStroke(Color.BLACK);
         hbox.getChildren().add(newCardRect);
         HBox.setMargin(newCardRect, new Insets(0, 0, 0, -50));
-
-        this.changePlayer(gameDirection);
+        if(playerName == playerID[0]){
+            this.changePlayer(gameDirection);
+        }
     }
 
     public void setCardColor(UnoCard.Color color) {
@@ -179,76 +184,86 @@ public class Game {
     public void submitPlayerCard(String pid, UnoCard nowCard, UnoCard playerCard, Rectangle cardRect,
             Rectangle nowCardRect, HBox playerBox, ArrayList<Rectangle> playerHand)
             throws InvalidColorSubmissionException, InvalidValueSubmissionException, InvalidPlayerTurnException {
-        System.out.println("====================== before ==================================");
-        System.out.println("turn : " + this.getCurrentPlayer());
-        System.out.println("playercard : " + playerCard.toString());
-        System.out.println("nowcard : " + nowCard.toString());
+        if (this.getCurrentPlayer().equals(pid)) {
+            System.out.println("====================== before ==================================");
+            System.out.println("turn : " + this.getCurrentPlayer());
+            System.out.println("playercard : " + playerCard.toString());
+            System.out.println("nowcard : " + nowCard.toString());
 
-        for (UnoCard card : getPlayerHand(pid)) {
-            System.out.println(card.toString());
-        }
-
-        System.out.println(cardRect.toString());
-        checkPlayerTurn(pid);
-
-        ArrayList<UnoCard> pHand = getPlayerHand(pid);
-
-        this.nowColor = nowCard.getColor();
-        this.nowValue = nowCard.getValue();
-        System.out.println("boolean : " + playerCard.getColor().equals(nowCard.getColor()) + playerCard.getValue().equals(nowCard.getValue()));
-        if (playerCard.getColor().equals(nowCard.getColor()) || playerCard.getValue().equals(nowCard.getValue()) || playerCard.getColor().equals(UnoCard.Color.Wild)) {
-
-            System.out.println("index : " + playerHand.indexOf(cardRect));
-
-            stockPile.add(playerCard);
-            pHand.remove(playerCard);
-            playerHand.remove(cardRect);
-
-            System.out.println(playerCard.toString());
-            System.out.println("NowCard : " + nowCard.toString());
-
-            nowCard.setColor(playerCard.getColor());
-            nowCard.setValue(playerCard.getValue());
-
-            System.out.println("NowCard[after] : " + nowCard.toString());
-            System.out.println("size inner : " + playerHand.size());
-
-            if (this.getCurrentPlayer().equals(playerID[1])) {
-                int count = 0;
-                for (UnoCard.Color color : playerCard.colors) {
-                    if (playerCard.getColor().equals(playerCard.colors[count])) {
-                        System.out.println("/pics/" + playerCard.getValueToInt() + picName[count] + ".png");
-                        nowCardRect.setFill(new ImagePattern(deck.drawCardImage(playerCard, picName[count])));
-                    }
-                    count++;
-                    if (playerCard.getColor().equals(UnoCard.Color.Wild)) {
-                        Random random = new Random();
-                        int randomColor = random.nextInt(UnoCard.Color.values().length - 1);
-                        nowCard.setColor(playerCard.colors[randomColor]);
-                    }
-                }
-            } else {
-                nowCardRect.setFill(cardRect.getFill());
-            }
-
-            playerBox.getChildren().remove(cardRect);
-
-            System.out.println("====================== after ==================================");
             for (UnoCard card : getPlayerHand(pid)) {
-                System.out.println(card.toString());
-            }
-            for (Rectangle card : playerHand) {
-                System.out.println(card.toString());
+//                System.out.println(card.toString());
             }
 
-        }
-        if (isPressedEngoButton == false && getPlayerHandSize(pid) == 1) {
-            this.submitDraw(pid, playerHand, this.getDeck().drawCard(), playerBox);
+//            System.out.println(cardRect.toString());
+            //checkPlayerTurn(pid);
+
+            ArrayList<UnoCard> pHand = getPlayerHand(pid);
+
+            this.nowColor = nowCard.getColor();
+            this.nowValue = nowCard.getValue();
+            if (playerCard.getColor().equals(nowCard.getColor()) || playerCard.getValue().equals(nowCard.getValue()) || playerCard.getColor().equals(UnoCard.Color.Wild)) {
+
+
+                stockPile.add(playerCard);
+                pHand.remove(playerCard);
+                playerHand.remove(cardRect);
+
+
+                nowCard.setColor(playerCard.getColor());
+                nowCard.setValue(playerCard.getValue());
+
+                if (this.getCurrentPlayer().equals(playerID[1])) {
+                    int count = 0;
+                    for (UnoCard.Color color : playerCard.colors) {
+                        if (playerCard.getColor().equals(playerCard.colors[count])) {
+                            nowCardRect.setFill(new ImagePattern(deck.drawCardImage(playerCard, picName[count])));
+                        }
+                        count++;
+                        if (playerCard.getColor().equals(UnoCard.Color.Wild)) {
+                            Random random = new Random();
+                            int randomColor = random.nextInt(UnoCard.Color.values().length - 1);
+                            nowCard.setColor(playerCard.colors[randomColor]);
+                        }
+                    }
+                } else {
+                    nowCardRect.setFill(cardRect.getFill());
+                }
+
+                playerBox.getChildren().remove(cardRect);
+
+                System.out.println("====================== after ==================================");
+                for (UnoCard card : getPlayerHand(pid)) {
+                    System.out.println(card.toString());
+                }
+                for (Rectangle card : playerHand) {
+                    System.out.println(card.toString());
+                }
+
+            }
+            if (isPressedEngoButton == false && getPlayerHandSize(pid) == 1) {
+                this.submitDraw(pid, playerHand, this.getDeck().drawCard(), playerBox);
+            }
+
+            if (hasEmptyHand(this.playerID[currentPlayer])) {
+                // winner pop up
+            }
+//
+//            if (playerCard.getValue().equals(UnoCard.Value.PlusTwo)) {
+//                if (pid.equals(playerID[0])) {
+//                    this.submitDraw(playerID[1], botRect, this.getDeck().drawCard(),botBox );
+//                    getPlayerHand(playerID[1]).add(deck.drawCard());
+//                } else {
+//                    this.submitDraw(playerID[1], botRect, this.getDeck().drawCard(),playerBox);
+//                    getPlayerHand(playerID[1]).add(deck.drawCard());
+//                }
+//            }
+
+//            if (playerCard.getValue().equals(UnoCard.Value.WildFour)) {
+//                get
+//            }
+            this.changePlayer(gameDirection);
         }
 
-        if (hasEmptyHand(this.playerID[currentPlayer])) {
-            // winner pop up
-        }
 ////        nowColor = nowCard.getColor();
 ////        nowValue = nowCard.getValue();
 //        stockPile.add(nowCard);
@@ -300,7 +315,7 @@ public class Game {
 ////            msgRe.setFont(new Font("Tahoma", Font.BOLD, 48));
 ////            JOptionPane.showMessageDialog(null, msgRe);
 //
-        this.changePlayer(gameDirection);
+        
 
     }
 
@@ -387,4 +402,35 @@ public class Game {
         }
         System.out.println("current player : " + currentPlayer);
     }
+
+    public Image getImageInCardRect() {
+        return imageInCardRect;
+    }
+
+    public void skipNextPlayer() {
+        if (currentPlayer == playerID.length-1) {
+            currentPlayer = 1;
+        } else {
+            currentPlayer += 2;
+            if (currentPlayer > playerID.length) {
+                currentPlayer = 0;
+            }
+        }
+
+    }
+
+//    public void setBotRect(ArrayList<Rectangle> botRect) {
+//        this.botRect = botRect;
+//    }
+//
+//    public ArrayList<Rectangle> getBotRect() {
+//        return this.botRect;
+//    }
+//    public HBox getBotBox(){
+//        return this.botBox;
+//    }
+//    
+//    public void setHbox(HBox botBox){
+//        this.botBox = botBox;
+//    }
 }

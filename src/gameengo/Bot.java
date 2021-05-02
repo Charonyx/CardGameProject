@@ -53,12 +53,10 @@ public class Bot {
             isCanPlay = true;
             hasCard = true;
             ArrayList<UnoCard> getCardCanPlay = new ArrayList<UnoCard>();
-            System.out.println("HI! I'm bot");
             if (isCanPlay) {
                 for (UnoCard card : cards) {
                     if ((nowCard.getColor().equals(card.getColor()) || nowCard.getValue().equals(card.getValue()) || card.getColor().equals(UnoCard.Color.Wild))) {
                         getCardCanPlay.add(card);
-                        System.out.println("Arraylist size : " + getCardCanPlay.size());
                     }
                 }
 
