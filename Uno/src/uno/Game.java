@@ -5,6 +5,8 @@
  */
 package uno;
 
+import uno.UnoDeck;
+import uno.UnoCard;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
