@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -30,10 +32,23 @@ public class HowtoController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private AnchorPane howto1;
+    @FXML
+    private AnchorPane howto2;
+    @FXML
+    private Button p1;
+    @FXML
+    private Button p2;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mediaMenu.stop();
+        
+        howto1.setVisible(true);
+        howto2.setVisible(false);
+        
+        
     }
 
     @FXML
@@ -47,6 +62,20 @@ public class HowtoController implements Initializable {
         scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void actionPage1(ActionEvent event) {
+        playSoundClick();
+        howto1.setVisible(true);
+        howto2.setVisible(false);
+    }
+
+    @FXML
+    private void actionPage2(ActionEvent event) {
+        playSoundClick();
+        howto1.setVisible(false);
+        howto2.setVisible(true);
     }
 
 }
