@@ -57,7 +57,7 @@ and open the template in the editor.
 .play .button,
 .rank .button,
 .game .button{
-    -fx-background-color: linear-gradient(to bottom right,#D3F6D8,#76DFE6);//#ff9999;
+    -fx-background-color: linear-gradient(to bottom right,#D3F6D8,#76DFE6);
     -fx-background-radius: 50;
     /*-fx-background-insets: 10;*/
     /*-fx-background-image: url(../img/btn.png);*/

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -9,23 +11,56 @@
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" styleClass="howto" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.HowtoController">
    <children>
-      <VBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="100.0">
+      <AnchorPane fx:id="howto1" prefHeight="720.0" prefWidth="1080.0">
          <children>
-            <Label text="แค่นี้เล่นไม่เป็นอ๋อ" textFill="WHITE">
-               <font>
-                  <Font size="39.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1080.0">
+            <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/howto1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="howto2" prefHeight="720.0" prefWidth="1080.0" visible="false">
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/howto2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="1080.0" spacing="500.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#actionBack" text="Back">
+                  <Button fx:id="p1" layoutX="361.0" layoutY="41.0" mnemonicParsing="false" onAction="#actionPage1" text="PAGE 1">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="p2" layoutX="651.0" layoutY="72.0" mnemonicParsing="false" onAction="#actionPage2" text="Page 2">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="720.0" prefWidth="1080.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#actionBack" prefHeight="75.0" prefWidth="301.0" text="Back">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
