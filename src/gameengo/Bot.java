@@ -18,7 +18,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class Bot {
 
-    private String[] botName = {"Grace", "Farsai", "Onn", "Rom", "Cherry", "Micheal", "Justin", "Taylor"};
+    private String[] botName = {"Grace", "Farsai", "Onn", "Rom", "Cherry", "Micheal", "Justin", "Taylor", "Pupz" , "Pupae"};
     private String botAsplayerName;
     private int queue;
     private ArrayList<UnoCard> cards;
@@ -62,13 +62,19 @@ public class Bot {
 
                 if (getCardCanPlay.size() == 0) {
                     this.game.submitDraw(botAsplayerName, cardRect, nowCard, botHBox);
-                    isCanPlay = false;
+                    if(cards.get(cards.size()-1).getColor().equals(nowCard.getColor())||cards.get(cards.size()-1).getColor().equals(UnoCard.Color.Wild)||cards.get(cards.size()-1).getValue().equals(nowCard.getValue())){
+                        game.submitPlayerCard(botAsplayerName, nowCard,cards.get(cards.size()-1), cardRect.get(cards.size()-1), nowCardRect, botHBox, cardRect); 
+                    }
+                    else{
+                        game.changePlayer(game.getGameDirection());
+                    }
+                    //isCanPlay = false;
                 } else {
                     Random random = new Random();
                     int index = random.nextInt(getCardCanPlay.size());
                     cards.remove(getCardCanPlay.get(index));
                     game.submitPlayerCard(botAsplayerName, nowCard, getCardCanPlay.get(index), cardRect.get(index), nowCardRect, botHBox, cardRect);
-
+                    System.out.println("Bot play : " + getCardCanPlay.get(index).toString());
                 }
             }
             if (game.getPlayerHandSize(botAsplayerName) == 1) {

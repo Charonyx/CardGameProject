@@ -237,26 +237,27 @@ public class MAINController implements Initializable {
                      game.submitPlayerCard(playerName[0], nowCardPlay, game.getPlayerHand(playerName[0]).get(playerHand.indexOf(rect)),playerHand.get(playerHand.indexOf(rect)), nowCardRect, playerBox, playerHand);
                      if(nowCardPlay.getColor().equals(UnoCard.Color.Wild)){
                         selectWildScene.setVisible(true);
-                        
+                     }
                      if(nowCardPlay.getValue().equals(UnoCard.Value.Reverse)){
-                        game.changePlayer(!game.getGameDirection());
+                        //game.changePlayer(!game.getGameDirection());
                      }
                      if(nowCardPlay.getValue().equals(UnoCard.Value.PlusTwo)){
-                            game.changePlayer(game.getGameDirection());
+                         System.out.println("Bot + 2");
+                            //game.changePlayer(game.getGameDirection());
                             game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);  
                             game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);  
                      }
                      if(nowCardPlay.getValue().equals(UnoCard.Value.WildFour)){
-                            game.changePlayer(game.getGameDirection());
+                         System.out.println("Bot + 4");
+                            //game.changePlayer(game.getGameDirection());
                             game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
                             game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
                             game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
                             game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
                      }
                      if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
-                         game.skipNextPlayer();
+                         game.changePlayer(game.getGameDirection());
                      }
-                   }
                 }
             System.out.println("Current player : " + game.getCurrentPlayer());
         if (game.getCurrentPlayer().equals(playerName[1])) {
@@ -280,6 +281,7 @@ public class MAINController implements Initializable {
                      }
                      if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
                          game.changePlayer(game.getGameDirection());
+                         System.out.println("currentPlayer!!!! : " + game.getCurrentPlayer());
                      }
 
             } catch (Game.InvalidColorSubmissionException ex) {
@@ -304,13 +306,13 @@ public class MAINController implements Initializable {
 
     @FXML
     private void drawMethod(MouseEvent event) {
-
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!draw!!!!!!!!!!!!!!!!!!!");
         if (game.getCurrentPlayer().equals(playerName[0])) {
             r1 = rand.nextInt(2) + 1;
             UnoCard CardDraw;
             boolean isFilledImage = false;
             CardDraw = game.getDeck().drawCard();
-            game.submitDraw(playerName[0], playerHand, CardDraw, playerBox);
+
         for (Rectangle rect : playerHand) {
                  playerHand.get(playerHand.indexOf(rect)).setOnMouseClicked(new EventHandler<MouseEvent>(){
                 @Override
@@ -340,6 +342,25 @@ public class MAINController implements Initializable {
             try {
                 System.out.println("BOT card : " + bot.getCards().toString());
                 bot.botPlay(game.getCurrentPlayer(), nowCardPlay, nowCardRect);
+                if(nowCardPlay.getValue().equals(UnoCard.Value.Reverse)){
+                        //game.changePlayer(!game.getGameDirection());
+                     }
+                     if(nowCardPlay.getValue().equals(UnoCard.Value.PlusTwo)){
+                         //game.changePlayer(game.getGameDirection());
+                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
+                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
+                     }
+                     if(nowCardPlay.getValue().equals(UnoCard.Value.WildFour)){
+                         //game.changePlayer(game.getGameDirection());
+                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
+                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
+                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
+                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
+                     }
+                     if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
+                         //game.changePlayer(game.getGameDirection());
+                         System.out.println("currentPlayer!!!! : " + game.getCurrentPlayer());
+                     }
             } catch (Game.InvalidColorSubmissionException ex) {
                 Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Game.InvalidValueSubmissionException ex) {
@@ -354,10 +375,11 @@ public class MAINController implements Initializable {
                 instatntRect.setFill(new ImagePattern(game.getImageInCardRect()));
             }
             else{
-                game.changePlayer(game.getGameDirection());
+                game.submitDraw(playerName[0], playerHand, CardDraw, playerBox);
             }
-        
+                //game.changePlayer(game.getGameDirection());
         }
+        //game.changePlayer(game.getGameDirection());
     }
 
     
@@ -419,6 +441,6 @@ public class MAINController implements Initializable {
             instatntRect.setFill(Color.TRANSPARENT);
         }
         playOrSkipState.setVisible(false);
-//        playerHand.remove(playerHand.get(playerHand.size() - 1));
+        playerHand.remove(playerHand.get(playerHand.size() - 1));
     }
 }

@@ -154,27 +154,42 @@ public class Game {
         newCardRect.setHeight(140.0f);
 
         int count = 0;
-        if (!this.getCurrentPlayer().equals(playerID[1])) {
-            for (UnoCard.Color color : drawCard.colors) {
-                if (drawCard.getColor().equals(drawCard.colors[count])) {
+        System.out.println("current player : " + getCurrentPlayer());
+        if (playerName != playerID[1]) {
+            if (this.getCurrentPlayer().equals(playerName)) {
+                for (UnoCard.Color color : drawCard.colors) {
+                    if (drawCard.getColor().equals(drawCard.colors[count])) {
 //                    System.out.println("/pics/" + drawCard.getValueToInt() + picName[count] + ".png");
-                    newCardRect.setFill(new ImagePattern(deck.drawCardImage(drawCard, picName[count])));
-                    this.imageInCardRect = deck.drawCardImage(drawCard, picName[count]);
+                        newCardRect.setFill(new ImagePattern(deck.drawCardImage(drawCard, picName[count])));
+                        this.imageInCardRect = deck.drawCardImage(drawCard, picName[count]);
+                    }
+                    count++;
                 }
-                count++;
+            } else {
+
+                newCardRect.setFill(new ImagePattern(new Image("/pic/back.png")));
+                newCardRect.setRotate(180.0);
             }
         } else {
+            if (!this.getCurrentPlayer().equals(playerName)) {
+                for (UnoCard.Color color : drawCard.colors) {
+                    if (drawCard.getColor().equals(drawCard.colors[count])) {
+//                    System.out.println("/pics/" + drawCard.getValueToInt() + picName[count] + ".png");
+                        newCardRect.setFill(new ImagePattern(deck.drawCardImage(drawCard, picName[count])));
+                        this.imageInCardRect = deck.drawCardImage(drawCard, picName[count]);
+                    }
+                    count++;
+                }
+            } else {
 
-            newCardRect.setFill(new ImagePattern(new Image("/pic/back.png")));
-            newCardRect.setRotate(180.0);
+                newCardRect.setFill(new ImagePattern(new Image("/pic/back.png")));
+                newCardRect.setRotate(180.0);
+            }
         }
 
         newCardRect.setStroke(Color.BLACK);
         hbox.getChildren().add(newCardRect);
         HBox.setMargin(newCardRect, new Insets(0, 0, 0, -50));
-        if(playerName == playerID[0]){
-            this.changePlayer(gameDirection);
-        }
     }
 
     public void setCardColor(UnoCard.Color color) {
@@ -196,18 +211,15 @@ public class Game {
 
 //            System.out.println(cardRect.toString());
             //checkPlayerTurn(pid);
-
             ArrayList<UnoCard> pHand = getPlayerHand(pid);
 
             this.nowColor = nowCard.getColor();
             this.nowValue = nowCard.getValue();
             if (playerCard.getColor().equals(nowCard.getColor()) || playerCard.getValue().equals(nowCard.getValue()) || playerCard.getColor().equals(UnoCard.Color.Wild)) {
 
-
                 stockPile.add(playerCard);
                 pHand.remove(playerCard);
                 playerHand.remove(cardRect);
-
 
                 nowCard.setColor(playerCard.getColor());
                 nowCard.setValue(playerCard.getValue());
@@ -238,7 +250,7 @@ public class Game {
                 for (Rectangle card : playerHand) {
                     System.out.println(card.toString());
                 }
-
+                this.changePlayer(gameDirection);
             }
             if (isPressedEngoButton == false && getPlayerHandSize(pid) == 1) {
                 this.submitDraw(pid, playerHand, this.getDeck().drawCard(), playerBox);
@@ -261,7 +273,6 @@ public class Game {
 //            if (playerCard.getValue().equals(UnoCard.Value.WildFour)) {
 //                get
 //            }
-            this.changePlayer(gameDirection);
         }
 
 ////        nowColor = nowCard.getColor();
@@ -315,8 +326,6 @@ public class Game {
 ////            msgRe.setFont(new Font("Tahoma", Font.BOLD, 48));
 ////            JOptionPane.showMessageDialog(null, msgRe);
 //
-        
-
     }
 
     class InvalidPlayerTurnException extends Exception {
@@ -408,7 +417,7 @@ public class Game {
     }
 
     public void skipNextPlayer() {
-        if (currentPlayer == playerID.length-1) {
+        if (currentPlayer == playerID.length - 1) {
             currentPlayer = 1;
         } else {
             currentPlayer += 2;
