@@ -306,6 +306,7 @@ public class MAINController implements Initializable {
             }
         }
         System.out.println("Current player : " + game.getCurrentPlayer());
+        
     }
 
     private void addImageToCard(Image[] image) {

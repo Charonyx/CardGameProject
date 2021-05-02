@@ -28,55 +28,58 @@ public class Bot {
     HBox botHBox;
     Game game;
     Button engoButton;
-    
-    public Bot(HBox botHBox,Button engoButton) {
-        
+
+    public Bot(HBox botHBox, Button engoButton) {
+
         this.botHBox = botHBox;
         this.engoButton = engoButton;
     }
-    
-    public void BotgetGame(Game game){
+
+    public void BotgetGame(Game game) {
         this.game = game;
     }
-    public void setBotCard(ArrayList<UnoCard> card){
+
+    public void setBotCard(ArrayList<UnoCard> card) {
         this.cards = card;
     }
-    
-    public void setBotRect(ArrayList<Rectangle> rect){
+
+    public void setBotRect(ArrayList<Rectangle> rect) {
         this.cardRect = rect;
     }
-    public void botPlay(String currentPlayerName, UnoCard nowCard, Rectangle nowCardRect) 
+
+    public void botPlay(String currentPlayerName, UnoCard nowCard, Rectangle nowCardRect)
             throws Game.InvalidColorSubmissionException, Game.InvalidValueSubmissionException, Game.InvalidPlayerTurnException {
         if (currentPlayerName.equals(botAsplayerName)) {
             isCanPlay = true;
             hasCard = true;
+            ArrayList<UnoCard> getCardCanPlay = new ArrayList<UnoCard>();
             System.out.println("HI! I'm bot");
             if (isCanPlay) {
                 for (UnoCard card : cards) {
                     if ((nowCard.getColor().equals(card.getColor()) || nowCard.getValue().equals(card.getValue()) || card.getColor().equals(UnoCard.Color.Wild))) {
-                        game.submitPlayerCard(botAsplayerName, nowCard, card,cardRect.get(cards.indexOf(card)), nowCardRect, botHBox, cardRect);
-                        if(card.getColor().equals(UnoCard.Color.Wild)){
-                            Random random = new Random();
-                                int randomColor = random.nextInt(card.colors.length );
-                                nowCard.setColor(card.colors[randomColor]);
-                        }
-                        isCanPlay = false;
+                        getCardCanPlay.add(card);
+                        System.out.println("Arraylist size : " + getCardCanPlay.size());
                     }
+                }
+
+                if (getCardCanPlay.size() == 0) {
+                    this.game.submitDraw(botAsplayerName, cardRect, nowCard, botHBox);
+                    isCanPlay = false;
+                } else {
+                    Random random = new Random();
+                    int index = random.nextInt(getCardCanPlay.size());
+                    cards.remove(getCardCanPlay.get(index));
+                    game.submitPlayerCard(botAsplayerName, nowCard, getCardCanPlay.get(index), cardRect.get(index), nowCardRect, botHBox, cardRect);
 
                 }
-                hasCard = false;
-                if (!hasCard) {
-                    this.game.submitDraw(botAsplayerName,cardRect, nowCard, botHBox);
-                    isCanPlay = false;
-                }
             }
-            if(game.getPlayerHandSize(botAsplayerName) == 1){
-             game.setIsPressedEngoButton(true);
+            if (game.getPlayerHandSize(botAsplayerName) == 1) {
+                game.setIsPressedEngoButton(true);
             }
-            if(game.getPlayerHandSize(botAsplayerName)> 1 ){
+            if (game.getPlayerHandSize(botAsplayerName) > 1) {
                 game.setIsPressedEngoButton(false);
             }
-
+            isCanPlay = false;
         }
 
     }

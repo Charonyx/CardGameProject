@@ -7,6 +7,7 @@ package gameengo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -58,7 +59,7 @@ public class Game {
 
         playerID = player_ID;
         currentPlayer = 0;
-        gameDirection = false;
+        gameDirection = true;
 
         playerHand = new ArrayList<ArrayList<UnoCard>>();
 
@@ -159,7 +160,7 @@ public class Game {
                 count++;
             }
         } else {
-            
+
             newCardRect.setFill(new ImagePattern(new Image("/pic/back.png")));
             newCardRect.setRotate(180.0);
         }
@@ -211,18 +212,22 @@ public class Game {
 
             System.out.println("NowCard[after] : " + nowCard.toString());
             System.out.println("size inner : " + playerHand.size());
-            
+
             if (this.getCurrentPlayer().equals(playerID[1])) {
                 int count = 0;
                 for (UnoCard.Color color : playerCard.colors) {
                     if (playerCard.getColor().equals(playerCard.colors[count])) {
-                        System.out.println("/pics/" +playerCard.getValueToInt() + picName[count] + ".png");
+                        System.out.println("/pics/" + playerCard.getValueToInt() + picName[count] + ".png");
                         nowCardRect.setFill(new ImagePattern(deck.drawCardImage(playerCard, picName[count])));
                     }
                     count++;
+                    if (playerCard.getColor().equals(UnoCard.Color.Wild)) {
+                        Random random = new Random();
+                        int randomColor = random.nextInt(UnoCard.Color.values().length - 1);
+                        nowCard.setColor(playerCard.colors[randomColor]);
+                    }
                 }
-            }
-            else{
+            } else {
                 nowCardRect.setFill(cardRect.getFill());
             }
 
@@ -369,20 +374,17 @@ public class Game {
     public int getCurrentPlayerTurn() {
         return currentPlayer;
     }
-    public void changePlayer(boolean gameDirection){
-        gameDirection ^= true;
-        if (gameDirection == true) {
-            currentPlayer = (currentPlayer - 2) % playerID.length;
-            if (currentPlayer == -1) {
-                currentPlayer = playerID.length;
-            }
 
-            if (currentPlayer == -2) {
+    public void changePlayer(boolean gameDirection) {
+        this.gameDirection = gameDirection;
+        if (gameDirection == true) {
+            currentPlayer = currentPlayer - 1;
+            if (currentPlayer < 0) {
                 currentPlayer = playerID.length - 1;
             }
-        } else if (gameDirection == false) {
-            currentPlayer = (currentPlayer + 2) % playerID.length;
+        } else {
+            currentPlayer = (currentPlayer + 1) % playerID.length;
         }
-        System.out.println("current player : "+currentPlayer);
+        System.out.println("current player : " + currentPlayer);
     }
 }

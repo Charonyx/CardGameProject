@@ -132,5 +132,11 @@
             </VBox>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="playOrSkipState" prefHeight="720.0" prefWidth="1080.0">
+         <children>
+            <Button layoutX="227.0" layoutY="506.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="71.0" text="Button" />
+            <Button layoutX="768.0" layoutY="506.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="71.0" text="Button" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

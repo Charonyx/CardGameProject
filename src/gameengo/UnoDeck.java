@@ -37,31 +37,24 @@ public class UnoDeck {
         for (int i = 0; i < initCard.colors.length - 1; i++) {
             UnoCard.Color color = initCard.colors[i];
             cards[cardInDeck++] = new UnoCard(color,initCard.getValue(0));
-           // System.out.println("card : "+cards[count++].toString());
             for (int j = 1; j < 10; j++) {
                 cards[cardInDeck++] = new UnoCard(color, initCard.getValue(j));
-                //System.out.println("card : "+cards[count++].toString());
                 cards[cardInDeck++] = new UnoCard(color, initCard.getValue(j));
-                //System.out.println("card : "+cards[count++].toString());
             }
             UnoCard.Value[] values = new UnoCard.Value[] { UnoCard.Value.PlusTwo, UnoCard.Value.Reverse,
                     UnoCard.Value.Skip };
             for (UnoCard.Value value : values) {
                 
                 cards[cardInDeck++] = new UnoCard(color, value);
-               // System.out.println("card : "+cards[count++].toString());
                 cards[cardInDeck++] = new UnoCard(color, value);
-               // System.out.println("card : "+cards[count++].toString());
             }
         }
         UnoCard.Value[] values = new UnoCard.Value[] { UnoCard.Value.Wild, UnoCard.Value.WildFour };
         for (UnoCard.Value value : values) {
             for (int i = 0; i < 4; i++) {
                 cards[cardInDeck++] = new UnoCard(UnoCard.Color.Wild, value);
-               // System.out.println("card : "+cards[count++].toString()+ "card : "+ i);
             }
         }
-        //System.out.println("Count : " + count);
     }
 
     public void replaceDeck(ArrayList<UnoCard> cards) {
