@@ -5,6 +5,7 @@
  */
 package uno;
 
+import data.DataFile;
 import java.awt.Font;
 import java.io.*;
 import java.net.URL;
@@ -22,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import data.DataFile;
 import java.util.ArrayList;
 import javafx.scene.media.*;
 import javafx.util.Duration;
@@ -124,7 +126,7 @@ public class PlayController implements Initializable {
                 wScore.writeInt(0);
                 wScore.close();
 
-                root = FXMLLoader.load(getClass().getResource("MAIN.fxml"));
+                root = FXMLLoader.load(getClass().getResource("../gameengo/MAIN.fxml"));
 //                root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
