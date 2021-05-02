@@ -40,6 +40,7 @@ public class PlayController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     @FXML
     private Button home;
     @FXML
@@ -55,10 +56,7 @@ public class PlayController implements Initializable {
     @FXML
     private void actionBack(ActionEvent event) throws IOException {
         mediaMenu.stop();
-//        mediaRank.stop();
-//        mediaDirect.stop();
-//        mediaHowto.stop();
-//        mediaGame.stop();
+        playSoundClick();
 
         root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -74,16 +72,13 @@ public class PlayController implements Initializable {
 //        this.dipose();
         if (event.getSource() == setName) {
             if (name.getText().isBlank()) {
-                System.out.println("nooo");
-                
-//                alerr
-//                JLabel msg = new JLabel("Please en    ter your name");
-//                msg.setFont(new Font("Tahoma", Font.BOLD, 48));
-//                JOptionPane.showMessageDialog(null, "oh nooooo");
-//                System.out.println(name.getText());
-//                System.out.println("1234"+String.format("%s", name));
+//                System.out.println("nooo");
+                mediaMenu.setVolume(10);
+                playSoundError();
+
             } else {
                 mediaMenu.stop();
+                playSoundClick();
 
                 Media sound = new Media(new File(musicGame).toURI().toString());
                 mediaGame = new MediaPlayer(sound);
@@ -95,6 +90,7 @@ public class PlayController implements Initializable {
                 mediaGame.play();
                 mediaGame.setVolume(musicVolumn);
 
+                //---------------SEND NAME TO GAME SCENE------------------
 //                String namePlayer = name.getText().trim();
 //                System.out.println("name" + name.getText());
 //                DataFile collectName = new DataFile(name.getText());
@@ -105,12 +101,8 @@ public class PlayController implements Initializable {
 //                DataFile data = new DataFile(name.getText(), score);
 //                data.writeData();
 //                data.readData();
-//                /---------------SEND NAME TO GAME SCENE------------------
-//                textName = name.getText();
-//                try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("name.dat"))) {
-//            out.writeObject(new ));
-//        }
-                //save file txt
+
+                //------------------ SAVE FILE BINARY ----------------------
                 ObjectOutputStream wName = new ObjectOutputStream(new FileOutputStream("../Uno/src/data/name.dat"));
                 DataOutputStream wScore = new DataOutputStream(new FileOutputStream("../Uno/src/data/score.dat"));
 //                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FXML+"data/nameOfBot.dat"));

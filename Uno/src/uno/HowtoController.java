@@ -39,6 +39,7 @@ public class HowtoController implements Initializable {
     @FXML
     private void actionBack(ActionEvent event) throws IOException {
         mediaHowto.stop();
+        playSoundClick();
 
         root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

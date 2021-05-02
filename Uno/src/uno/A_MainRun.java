@@ -22,7 +22,6 @@ public class A_MainRun extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Pane root2 = new Pane();
         ImageView background = new ImageView(new Image("img/menu.png", 1080, 720, false, true));
@@ -34,7 +33,7 @@ public class A_MainRun extends Application {
         Image icon = new Image("img/engoLogo.png");
         stage.getIcons().add(icon);
 
-        //add pic menu
+//        //add pic menu
         Image logo = new Image("img/engoLogo.png");
 //        Image logo = new Image(new File("img/logonobg.png").toURI().toURL()); -> onn test can not resolve this QAQ
         ImageView imageView = new ImageView(logo);
@@ -42,8 +41,8 @@ public class A_MainRun extends Application {
         scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.show();
-
+        stage.show();       
     }
+    
 
 }

@@ -36,6 +36,7 @@ public class DirectController implements Initializable {
     @FXML
     private void actionBack(ActionEvent event) throws IOException {
         mediaDirect.stop();
+        playSoundClick();
         
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

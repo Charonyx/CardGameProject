@@ -21,6 +21,9 @@ and open the template in the editor.
     /*-fx-background-image: url(../logo.png);*/
 }
 
+.loader .label{
+    -fx-font-size: 40;
+}
 .howto .label,
 .direct .label,
 .play .label,
@@ -81,17 +84,6 @@ and open the template in the editor.
 .button:pressed{
     /*-fx-background-color: white;*/
     /*-fx-rotate: 10;*/
-}
-
-/*#playNow{
-    fx-color:cyan;
-    color: green;
-    -fx-background-color: black;
-    -fx-text-fill: aquamarine;
-}*/
-
-.progessBar{
-    -fx-width: 100;
 }
 
 .progress-bar > .bar {
