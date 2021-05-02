@@ -97,7 +97,7 @@ public class UnoDeck {
         if (isEmpty()) {
             throw new IllegalArgumentException("Can't draw a card since the deck is empty");
         }
-        return new Image("/pic/" + value.getValueToInt() + alphabet + ".png"); // get picture from deck
+        return new Image("/pics/" + value.getValueToInt() + alphabet + ".png"); // get picture from deck
     }
 
     

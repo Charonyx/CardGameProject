@@ -18,39 +18,39 @@
             <Rectangle fx:id="nowCardRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="159.0" layoutX="480.0" layoutY="283.0" stroke="BLACK" strokeType="INSIDE" width="119.0" />
             <AnchorPane layoutX="75.0" layoutY="10.0" prefHeight="159.0" prefWidth="948.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="50.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="140.0" prefWidth="947.0">
+                  <HBox fx:id="botHbox" alignment="CENTER" prefHeight="140.0" prefWidth="947.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
@@ -104,7 +104,7 @@
                   </Rectangle>
                </children>
             </HBox>
-            <Button layoutX="915.0" layoutY="618.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="112.0" text="ENGO!" />
+            <Button fx:id="engoButton" layoutX="915.0" layoutY="618.0" mnemonicParsing="false" onAction="#engoButtonState" prefHeight="59.0" prefWidth="112.0" text="ENGO!" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="selectWildScene" opacity="0.83" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: Black;" visible="false">
