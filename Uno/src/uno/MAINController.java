@@ -1,9 +1,5 @@
 package uno;
 
-import java.io.File;
-import uno.UnoCard;
-import uno.Bot;
-import uno.UnoDeck;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +8,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Duration;
-import javafx.event.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,7 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.animation.*;
-
+import javafx.event.Event;
 /**
  * FXML Controller class
  *
@@ -172,11 +169,8 @@ public class MAINController implements Initializable {
 
                         if (game.getPlayerHand(playerName[0]).get(i).getValue().equals(card.getValue(j++))) {
                             System.out.println(game.getPlayerHand(playerName[0]).get(i).toString());
-                            System.out.println("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
-                            imageCardInit[i] = new Image("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
-                            
-                            File file = new File("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
-                            System.out.println(file.exists());
+                            System.out.println("/pics/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
+                            imageCardInit[i] = new Image("/pics/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
                         }
                     }
                 }
@@ -346,13 +340,13 @@ public class MAINController implements Initializable {
         card6.setFill(new ImagePattern(image[5]));
         card7.setFill(new ImagePattern(image[6]));
 
-        botCard.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
-        botCard2.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
-        botCard3.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
-        botCard4.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
-        botCard5.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
-        botCard6.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
-        botCard7.setFill(new ImagePattern(new Image("../Uno/src/img/back.png")));
+        botCard.setFill(new ImagePattern(new Image("/pic/back.png")));
+        botCard2.setFill(new ImagePattern(new Image("/pic/back.png")));
+        botCard3.setFill(new ImagePattern(new Image("/pic/back.png")));
+        botCard4.setFill(new ImagePattern(new Image("/pic/back.png")));
+        botCard5.setFill(new ImagePattern(new Image("/pic/back.png")));
+        botCard6.setFill(new ImagePattern(new Image("/pic/back.png")));
+        botCard7.setFill(new ImagePattern(new Image("/pic/back.png")));
     }
 
     @FXML

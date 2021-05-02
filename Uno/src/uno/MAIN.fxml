@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="game" prefHeight="720.0" prefWidth="1080.0" styleClass="game" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameengo.MAINController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameengo.MAINController">
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="1033.0">
          <children>
@@ -60,7 +60,7 @@
                </children>
             </AnchorPane>
             <Button fx:id="drawBtn" layoutX="154.0" layoutY="125.0" mnemonicParsing="false" onMouseClicked="#drawMethod" prefHeight="159.0" prefWidth="127.0" rotate="-37.9" text="drawBtn" />
-            <Label layoutX="55.0" layoutY="618.0" prefHeight="37.0" prefWidth="156.0" style="-fx-background-color: tranparent; -fx-border-radius: 15 30 20; -fx-border-width: 1; -fx-border-color: white;" text="PlayerName">
+            <Label layoutX="55.0" layoutY="618.0" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: tranparent; -fx-border-radius: 15 30 20; -fx-border-width: 1; -fx-border-color: white;" text="PlayerName">
                <font>
                   <Font size="23.0" />
                </font>
@@ -119,26 +119,26 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="state" prefHeight="720.0" prefWidth="1080.0" visible="false">
+      <AnchorPane fx:id="state" prefHeight="720.0" prefWidth="1080.0">
          <children>
             <VBox alignment="CENTER" layoutX="405.0" prefHeight="720.0" prefWidth="300.0">
                <children>
                   <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/11E.png" />
+                        <Image url="@../pic/reverse.png" />
                      </image>
                   </ImageView>
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="state2" layoutX="10.0" layoutY="10.0" prefHeight="720.0" prefWidth="1080.0" visible="false">
+      <AnchorPane fx:id="state2" layoutX="10.0" layoutY="10.0" prefHeight="720.0" prefWidth="1080.0">
          <children>
-            <VBox alignment="CENTER" layoutX="375.0" prefHeight="720.0" prefWidth="350.0">
+            <VBox fx:id="reverseCard" alignment="CENTER" layoutX="375.0" prefHeight="720.0" prefWidth="350.0">
                <children>
                   <ImageView fx:id="skipIcon1" fitHeight="244.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/12E.png" />
+                        <Image url="@../../../CardGameProject-haveBug/src/pic/12E.png" />
                      </image>
                   </ImageView>
                </children>

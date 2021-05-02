@@ -63,7 +63,7 @@ public class UnoCard {
     
     @Override
     public String toString() {
-        return "UnoCard [ Color :" + color + " , value :" + value + "]";
+        return "UnoCard [ Color :" + color + " , value :" + value + "]"; //To change body of generated methods, choose Tools | Templates.
     }
 
     public int cardValue(UnoCard.Value cardValue){
