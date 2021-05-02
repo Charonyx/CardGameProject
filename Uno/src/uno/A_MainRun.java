@@ -35,7 +35,6 @@ public class A_MainRun extends Application {
 
 //        //add pic menu
         Image logo = new Image("img/engoLogo.png");
-//        Image logo = new Image(new File("img/logonobg.png").toURI().toURL()); -> onn test can not resolve this QAQ
         ImageView imageView = new ImageView(logo);
 
         scene.getStylesheets().add(getClass().getResource("UnoStyle.css").toExternalForm());

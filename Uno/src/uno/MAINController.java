@@ -1,5 +1,6 @@
 package uno;
 
+import java.io.File;
 import uno.UnoCard;
 import uno.Bot;
 import uno.UnoDeck;
@@ -11,8 +12,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Duration;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,7 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.animation.*;
-import javafx.event.Event;
+
 /**
  * FXML Controller class
  *
@@ -174,6 +174,9 @@ public class MAINController implements Initializable {
                             System.out.println(game.getPlayerHand(playerName[0]).get(i).toString());
                             System.out.println("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
                             imageCardInit[i] = new Image("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
+                            
+                            File file = new File("../Uno/src/img/" + card.getValueToInt(j - 1) + collectAlphabet + ".png");
+                            System.out.println(file.exists());
                         }
                     }
                 }
