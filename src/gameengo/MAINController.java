@@ -39,7 +39,7 @@ public class MAINController implements Initializable {
     int[] randDeck = new int[108];
 
     private Image[] imagecards = new Image[108];
-
+    private UnoCard cardTemp;
 //    private int[] card = new int[108];
     private final String[] nameImages = new String[108];
 //    private final int[] temp = new int[108];
@@ -121,7 +121,6 @@ public class MAINController implements Initializable {
     @FXML
     private void engoButtonState(ActionEvent event) {
     }
-    Bot bot;
 
     public enum Value {
         Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine,
@@ -138,10 +137,9 @@ public class MAINController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //nowCardRect.setFill(new ImagePattern(imageBlue1));
         //this.addTexture();
-        bot = new Bot(botHbox, engoButton);
-        name.add(playerName[0]);
+        
         int n = 1;
-        name.add(bot.randomBotName());
+        
         botRect.add(botCard);
         botRect.add(botCard2);
         botRect.add(botCard3);
@@ -149,13 +147,14 @@ public class MAINController implements Initializable {
         botRect.add(botCard5);
         botRect.add(botCard6);
         botRect.add(botCard7);
-
-        playerName = new String[name.size()];
-        for (String name : name) {
-            playerName[this.name.indexOf(name)] = name;
-        }
-        game = new Game(playerName);
-        bot.BotgetGame(game);
+        
+        //playerName = new String[name.size()];
+//        for (String name : name) {
+//            playerName[this.name.indexOf(name)] = name;
+//        }
+        name.add(playerName[0]);
+        game = new Game(name,botHbox, engoButton);
+        game.setBotRect(botRect);
         //game.start(game);
 //        for (int i = 0; i < game.getPlayerHandSize(playerName[0]); i--) {
         int i = 0;
@@ -180,8 +179,8 @@ public class MAINController implements Initializable {
             k = 0;
             i++;
         }
-        bot.setBotCard(game.getPlayerHand(playerName[1]));
-        bot.setBotRect(botRect);
+//        bot.setBotCard(game.getPlayerHand(playerName[1]));
+//        bot.setBotRect(botRect);
 
         Rectangle[] startHand = {card1, card2, card3, card4, card5, card6, card7};
         playerHand = new ArrayList<Rectangle>(Arrays.asList(startHand));
@@ -213,17 +212,7 @@ public class MAINController implements Initializable {
             temp++;
         }
         i = 0;
-        if (game.getCurrentPlayer().equals(playerName[1])) {
-            try {
-                bot.botPlay(game.getCurrentPlayer(), nowCardPlay, nowCardRect);
-            } catch (Game.InvalidColorSubmissionException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Game.InvalidValueSubmissionException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Game.InvalidPlayerTurnException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+
 
          for (Rectangle rect : playerHand) {
             
@@ -238,60 +227,29 @@ public class MAINController implements Initializable {
                      if(nowCardPlay.getColor().equals(UnoCard.Color.Wild)){
                         selectWildScene.setVisible(true);
                      }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.Reverse)){
-                        //game.changePlayer(!game.getGameDirection());
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.PlusTwo)){
-                         System.out.println("Bot + 2");
-                            //game.changePlayer(game.getGameDirection());
-                            game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);  
-                            game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);  
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.WildFour)){
-                         System.out.println("Bot + 4");
-                            //game.changePlayer(game.getGameDirection());
-                            game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
-                            game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
-                            game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
-                            game.submitDraw(playerName[1],bot.getCardRect(),game.getDeck().drawCard(), botHbox);
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
-                         game.changePlayer(game.getGameDirection());
-                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.Reverse)){
+//                        game.changePlayer(!game.getGameDirection());
+//                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.PlusTwo)){
+//                         System.out.println("Bot + 2");
+//                        //    game.changePlayer(game.getGameDirection());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox()); 
+//                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.WildFour)){
+//                         System.out.println("Bot + 4");
+//                        //    game.changePlayer(game.getGameDirection());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
+//                         game.changePlayer(game.getGameDirection());
+//                     }
                 }
             System.out.println("Current player : " + game.getCurrentPlayer());
-        if (game.getCurrentPlayer().equals(playerName[1])) {
-            try {
-                System.out.println("BOT card : " + bot.getCards().toString());
-                bot.botPlay(game.getCurrentPlayer(), nowCardPlay, nowCardRect);
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.Reverse)){
-                        game.changePlayer(!game.getGameDirection());
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.PlusTwo)){
-                         game.changePlayer(game.getGameDirection());
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.WildFour)){
-                         game.changePlayer(game.getGameDirection());
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
-                         game.changePlayer(game.getGameDirection());
-                         System.out.println("currentPlayer!!!! : " + game.getCurrentPlayer());
-                     }
 
-            } catch (Game.InvalidColorSubmissionException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Game.InvalidValueSubmissionException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Game.InvalidPlayerTurnException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
                     } catch (Game.InvalidColorSubmissionException ex) {
                         Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Game.InvalidValueSubmissionException ex) {
@@ -305,28 +263,47 @@ public class MAINController implements Initializable {
     }
 
     @FXML
-    private void drawMethod(MouseEvent event) {
+    private void drawMethod(MouseEvent event) throws Game.InvalidColorSubmissionException, Game.InvalidValueSubmissionException{
         System.out.println("!!!!!!!!!!!!!!!!!!!!!draw!!!!!!!!!!!!!!!!!!!");
         if (game.getCurrentPlayer().equals(playerName[0])) {
             r1 = rand.nextInt(2) + 1;
             UnoCard CardDraw;
             boolean isFilledImage = false;
             CardDraw = game.getDeck().drawCard();
-
+            cardTemp = CardDraw;
+            
         for (Rectangle rect : playerHand) {
                  playerHand.get(playerHand.indexOf(rect)).setOnMouseClicked(new EventHandler<MouseEvent>(){
                 @Override
             public void handle(MouseEvent t) {
             try { 
-                    
                 if(game.getCurrentPlayer().equals(playerName[0])){
                      game.submitPlayerCard(playerName[0], nowCardPlay, game.getPlayerHand(playerName[0]).get(playerHand.indexOf(rect)),playerHand.get(playerHand.indexOf(rect)), nowCardRect, playerBox, playerHand);
                      if(nowCardPlay.getColor().equals(UnoCard.Color.Wild)){
                         selectWildScene.setVisible(true);
-                    }
+                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.Reverse)){
+//                        game.changePlayer(!game.getGameDirection());
+//                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.PlusTwo)){
+//                         System.out.println("Bot + 2");
+//                            game.changePlayer(game.getGameDirection());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.WildFour)){
+//                         System.out.println("Bot + 4");
+//                            game.changePlayer(game.getGameDirection());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                            game.submitDraw(game.getPlayerID(1),game.botRect(),game.getDeck().drawCard(),game.botHBox());
+//                     }
+//                     if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
+//                         game.changePlayer(game.getGameDirection());
+//                     }
                 }
             System.out.println("now card left : " + playerHand.size());
-            
                     } catch (Game.InvalidColorSubmissionException ex) {
                         Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Game.InvalidValueSubmissionException ex) {
@@ -337,53 +314,45 @@ public class MAINController implements Initializable {
                 }
             });
          }
-        System.out.println("boolean[] : " + game.getCurrentPlayer().equals(playerName[1]));
-        if (game.getCurrentPlayer().equals(playerName[1])) {
-            try {
-                System.out.println("BOT card : " + bot.getCards().toString());
-                bot.botPlay(game.getCurrentPlayer(), nowCardPlay, nowCardRect);
-                if(nowCardPlay.getValue().equals(UnoCard.Value.Reverse)){
-                        //game.changePlayer(!game.getGameDirection());
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.PlusTwo)){
-                         //game.changePlayer(game.getGameDirection());
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.WildFour)){
-                         //game.changePlayer(game.getGameDirection());
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                            game.submitDraw(playerName[0],playerHand,game.getDeck().drawCard(), playerBox);
-                     }
-                     if(nowCardPlay.getValue().equals(UnoCard.Value.Skip)){ 
-                         //game.changePlayer(game.getGameDirection());
-                         System.out.println("currentPlayer!!!! : " + game.getCurrentPlayer());
-                     }
-            } catch (Game.InvalidColorSubmissionException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Game.InvalidValueSubmissionException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Game.InvalidPlayerTurnException ex) {
-                Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+            
             System.out.println("Current player : " + game.getCurrentPlayer());
+
             if (nowCardPlay.getColor().equals(CardDraw.getColor()) || nowCardPlay.getValue().equals(CardDraw.getValue()) || CardDraw.getColor().equals(UnoCard.Color.Wild)) {
                 playOrSkipState.setVisible(true);
-                instatntRect.setFill(new ImagePattern(game.getImageInCardRect()));
+                char temp = 0;
+                if(cardTemp.getColor() == UnoCard.Color.Red){
+                    temp = 'A';
+                }
+                if(cardTemp.getColor() == UnoCard.Color.Blue){
+                    temp = 'B';
+                }
+                if(cardTemp.getColor() == UnoCard.Color.Yellow){
+                    temp = 'C';
+                }
+                if(cardTemp.getColor() == UnoCard.Color.Green){
+                    temp = 'D';
+                }
+                if(cardTemp.getColor() == UnoCard.Color.Wild){
+                    temp = 'E';
+                }
+                instatntRect.setFill(new ImagePattern (game.getDeck().drawCardImage(cardTemp, temp)));
             }
             else{
-                game.submitDraw(playerName[0], playerHand, CardDraw, playerBox);
+                game.submitDraw(playerName[0], playerHand,cardTemp, playerBox);
+                game.changePlayer(game.getGameDirection());
+                try {
+                    try {
+                        game.botPlay(nowCardPlay,nowCardRect);
+                    } catch (Game.InvalidValueSubmissionException ex) {
+                        Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (Game.InvalidPlayerTurnException ex) {
+                    Logger.getLogger(MAINController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-                //game.changePlayer(game.getGameDirection());
         }
-        //game.changePlayer(game.getGameDirection());
     }
-
     
-
     private void addImageToCard(Image[] image) {
         card1.setFill(new ImagePattern(image[0]));
         card2.setFill(new ImagePattern(image[1]));
@@ -417,11 +386,13 @@ public class MAINController implements Initializable {
             nowCardPlay.setColor(UnoCard.Color.Green);
         }
         selectWildScene.setVisible(false);
+
     }
 
     @FXML
     private void skipButton(MouseEvent event) {
         if (event.getSource() == skip) {
+            game.submitDraw(playerName[0], playerHand,cardTemp, playerBox);
             game.changePlayer(game.getGameDirection());
             playOrSkipState.setVisible(false);
             instatntRect.setFill(Color.TRANSPARENT);
@@ -432,7 +403,7 @@ public class MAINController implements Initializable {
     private void playButton(MouseEvent event) throws Game.InvalidColorSubmissionException, Game.InvalidValueSubmissionException {
         if (event.getSource() == playButton) {
             UnoCard tempCard = game.getPlayerHand(playerName[0]).get(game.getPlayerHandSize(playerName[0]) - 1);
-            nowCardRect.setFill(new ImagePattern(game.getImageInCardRect()));
+            nowCardRect.setFill(instatntRect.getFill());
             try {
                 game.submitPlayerCard(playerName[0], nowCardPlay, tempCard, nowCardRect, playerHand.get(playerHand.size() - 1), playerBox, playerHand);
             } catch (Game.InvalidPlayerTurnException ex) {

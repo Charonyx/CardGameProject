@@ -28,7 +28,6 @@ public class Bot {
     HBox botHBox;
     Game game;
     Button engoButton;
-
     public Bot(HBox botHBox, Button engoButton) {
 
         this.botHBox = botHBox;
@@ -47,13 +46,13 @@ public class Bot {
         this.cardRect = rect;
     }
 
-    public void botPlay(String currentPlayerName, UnoCard nowCard, Rectangle nowCardRect)
+    public void botPlay(String currentPlayerName, UnoCard nowCard, Rectangle nowCardRect,boolean isCanPlay)
             throws Game.InvalidColorSubmissionException, Game.InvalidValueSubmissionException, Game.InvalidPlayerTurnException {
         if (currentPlayerName.equals(botAsplayerName)) {
-            isCanPlay = true;
+            this.isCanPlay = isCanPlay;
             hasCard = true;
             ArrayList<UnoCard> getCardCanPlay = new ArrayList<UnoCard>();
-            if (isCanPlay) {
+            if (this.isCanPlay) {
                 for (UnoCard card : cards) {
                     if ((nowCard.getColor().equals(card.getColor()) || nowCard.getValue().equals(card.getValue()) || card.getColor().equals(UnoCard.Color.Wild))) {
                         getCardCanPlay.add(card);
@@ -83,7 +82,7 @@ public class Bot {
             if (game.getPlayerHandSize(botAsplayerName) > 1) {
                 game.setIsPressedEngoButton(false);
             }
-            isCanPlay = false;
+            //this.isCanPlay = false;
         }
 
     }
@@ -114,7 +113,4 @@ public class Bot {
         return cardRect;
     }
 
-    public void setCardRect(ArrayList<Rectangle> cardRect) {
-        this.cardRect = cardRect;
-    }
 }
