@@ -62,7 +62,7 @@
             <Insets left="100.0" right="100.0" />
          </padding>
       </HBox>
-      <Button fx:id="rank" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#actionRank" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="RANK" textFill="#ff5353">
+      <Button fx:id="rank" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#actionRank" prefHeight="50.0" prefWidth="250.0" stylesheets="@UnoStyle.css" text="RANK" textFill="#ff5353" visible="false">
          <font>
             <Font name="Cooper Black" size="21.0" />
          </font>

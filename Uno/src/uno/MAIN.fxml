@@ -3,54 +3,54 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="game" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uno.MAINController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameengo.MAINController">
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="1033.0">
          <children>
             <Rectangle fx:id="nowCardRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="159.0" layoutX="480.0" layoutY="283.0" stroke="BLACK" strokeType="INSIDE" width="119.0" />
             <AnchorPane layoutX="75.0" layoutY="10.0" prefHeight="159.0" prefWidth="948.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="50.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="140.0" prefWidth="947.0">
+                  <HBox fx:id="botHbox" alignment="CENTER" prefHeight="140.0" prefWidth="947.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                        <Rectangle fx:id="botCard7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
                            <HBox.margin>
                               <Insets left="-50.0" />
                            </HBox.margin>
@@ -60,12 +60,11 @@
                </children>
             </AnchorPane>
             <Button fx:id="drawBtn" layoutX="154.0" layoutY="125.0" mnemonicParsing="false" onMouseClicked="#drawMethod" prefHeight="159.0" prefWidth="127.0" rotate="-37.9" text="drawBtn" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="618.0" prefHeight="37.0" prefWidth="159.0" style="-fx-background-color: tranparent; -fx-border-radius: 15 30 20; -fx-border-width: 1; -fx-border-color: white;" text="PlayerName">
+            <Label layoutX="55.0" layoutY="618.0" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: tranparent; -fx-border-radius: 15 30 20; -fx-border-width: 1; -fx-border-color: white;" text="PlayerName">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="name" alignment="CENTER" layoutX="5.0" layoutY="650.0" prefHeight="55.0" prefWidth="258.0" />
             <HBox fx:id="playerBox" alignment="CENTER" layoutX="198.0" layoutY="560.0" prefHeight="159.0" prefWidth="749.0">
                <children>
                   <Rectangle fx:id="card1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
@@ -105,7 +104,7 @@
                   </Rectangle>
                </children>
             </HBox>
-            <Button layoutX="915.0" layoutY="618.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="112.0" text="ENGO!" />
+            <Button fx:id="engoButton" layoutX="915.0" layoutY="618.0" mnemonicParsing="false" onAction="#engoButtonState" prefHeight="59.0" prefWidth="112.0" text="ENGO!" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="selectWildScene" opacity="0.83" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: Black;" visible="false">
@@ -120,27 +119,31 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="gameover" prefHeight="720.0" prefWidth="1080.0" visible="false">
+      <AnchorPane fx:id="state" prefHeight="720.0" prefWidth="1080.0" visible="false">
          <children>
-            <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/over.png" />
-               </image></ImageView>
-         </children></AnchorPane>
-      <AnchorPane fx:id="winner" prefHeight="720.0" prefWidth="1080.0" visible="false">
-         <children>
-            <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/win.png" />
-               </image></ImageView>
-         </children></AnchorPane>
-      <HBox alignment="CENTER_RIGHT" prefHeight="131.0" prefWidth="1080.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Button fx:id="back" mnemonicParsing="false" onAction="#actionBack" text="Back" />
+            <VBox alignment="CENTER" layoutX="405.0" prefHeight="720.0" prefWidth="300.0">
+               <children>
+                  <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/11E.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
          </children>
-         <padding>
-            <Insets right="20.0" />
-         </padding>
-      </HBox>
+      </AnchorPane>
+      <AnchorPane fx:id="state2" layoutX="10.0" layoutY="10.0" prefHeight="720.0" prefWidth="1080.0" visible="false">
+         <children>
+            <VBox alignment="CENTER" layoutX="375.0" prefHeight="720.0" prefWidth="350.0">
+               <children>
+                  <ImageView fx:id="skipIcon1" fitHeight="244.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/12E.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
