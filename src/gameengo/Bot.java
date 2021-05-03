@@ -52,6 +52,7 @@ public class Bot {
             this.isCanPlay = isCanPlay;
             hasCard = true;
             ArrayList<UnoCard> getCardCanPlay = new ArrayList<UnoCard>();
+            System.out.println("bot hand : " + cards.size());
             if (this.isCanPlay) {
                 for (UnoCard card : cards) {
                     if ((nowCard.getColor().equals(card.getColor()) || nowCard.getValue().equals(card.getValue()) || card.getColor().equals(UnoCard.Color.Wild))) {
@@ -60,9 +61,11 @@ public class Bot {
                 }
 
                 if (getCardCanPlay.size() == 0) {
+                    System.out.println("No card can play");
                     this.game.submitDraw(botAsplayerName, cardRect, nowCard, botHBox);
                     if(cards.get(cards.size()-1).getColor().equals(nowCard.getColor())||cards.get(cards.size()-1).getColor().equals(UnoCard.Color.Wild)||cards.get(cards.size()-1).getValue().equals(nowCard.getValue())){
                         game.submitPlayerCard(botAsplayerName, nowCard,cards.get(cards.size()-1), cardRect.get(cards.size()-1), nowCardRect, botHBox, cardRect); 
+                        System.out.println("--------------- 1 --------------------");
                     }
                     else{
                         game.changePlayer(game.getGameDirection());
@@ -77,10 +80,10 @@ public class Bot {
                 }
             }
             if (game.getPlayerHandSize(botAsplayerName) == 1) {
-                game.setIsPressedEngoButton(true);
+                game.isPressEngo(true);
             }
             if (game.getPlayerHandSize(botAsplayerName) > 1) {
-                game.setIsPressedEngoButton(false);
+                game.isPressEngo(false);
             }
             //this.isCanPlay = false;
         }

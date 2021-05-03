@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -105,21 +104,14 @@
                   </Rectangle>
                </children>
             </HBox>
-            <Button fx:id="engoButton" layoutX="915.0" layoutY="618.0" mnemonicParsing="false" onAction="#engoButtonState" prefHeight="59.0" prefWidth="112.0" text="ENGO!" />
+            <Button fx:id="engoButton" layoutX="915.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#isClickedEngo" prefHeight="59.0" prefWidth="112.0" text="ENGO!" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="selectWildScene" opacity="0.83" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: Black;" visible="false">
          <children>
             <HBox alignment="CENTER" layoutX="-1.0" layoutY="211.0" prefHeight="300.0" prefWidth="1080.0" spacing="20.0">
                <children>
-                  <Rectangle fx:id="selectRed" arcHeight="5.0" arcWidth="5.0" fill="RED" height="300.0" onMouseClicked="#selectColor" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <effect>
-                        <ImageInput>
-                           <source>
-                              <Image url="file:/C:/Users/USER/OneDrive%20-%20KMITL/Documents/NetBeansProjects/GameENgo/src/pics/A.png" />
-                           </source>
-                        </ImageInput>
-                     </effect></Rectangle>
+                  <Rectangle fx:id="selectRed" arcHeight="5.0" arcWidth="5.0" fill="RED" height="300.0" onMouseClicked="#selectColor" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                   <Rectangle fx:id="selectBlue" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="300.0" onMouseClicked="#selectColor" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                   <Rectangle fx:id="selectYellow" arcHeight="5.0" arcWidth="5.0" fill="#ffd421" height="300.0" onMouseClicked="#selectColor" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                   <Rectangle fx:id="selectGreen" arcHeight="5.0" arcWidth="5.0" fill="#00bc22" height="300.0" onMouseClicked="#selectColor" stroke="BLACK" strokeType="INSIDE" width="200.0" />
