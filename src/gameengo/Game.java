@@ -310,7 +310,6 @@ public class Game {
                 if (nowCard.getColor().equals(UnoCard.Color.Wild)&& nowCard.getValue().equals(UnoCard.Value.Wild)) {
                     this.pane.setVisible(true);
                     this.canPlay = true;
-                    bot.botPlay(playerID[1], nowCard, nowCardRect, this.canPlay);
                 }
                 if (nowCard.getValue().equals(UnoCard.Value.Reverse)) {
                     this.changePlayer(!this.getGameDirection());
@@ -338,7 +337,6 @@ public class Game {
                 }
                 
                 System.out.println("isCanPlay : " + this.isCanPlay());
-                this.changePlayer(gameDirection);
                 bot.botPlay(playerID[1], nowCard, nowCardRect, this.canPlay);
             }
             
